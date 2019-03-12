@@ -1,0 +1,9 @@
+The Submariner Kubernetes Broker is now setup.
+
+You can retrieve the server URL by running
+
+  $ SUBMARINER_BROKER_URL=$(kubectl -n default get endpoints kubernetes -o jsonpath="{.subsets[0].addresses[0].ip}:{.subsets[0].ports[0].port}")
+
+The broker client token can be retrieved by running
+
+  $ SUBMARINER_BROKER_TOKEN=$(kubectl -n {{ .Release.Namespace }} get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.io/service-account\.name']=='{{ template "submariner-k8s-broker.clientServiceAccountName" . }}')].data.token}"|base64 --decode)
