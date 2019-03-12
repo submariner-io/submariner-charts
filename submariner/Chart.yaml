@@ -1,11 +1,11 @@
 name: submariner
 version: 0.0.1
-appVersion: 0.0.1
+appVersion: v0.0.1
 description: Submariner
 keywords:
 home: https://submariner.io/
 sources:
 - https://github.com/rancher/submariner-charts
 maintainers:
-- name: Chris Kim
-  email: chris.kim@rancher.com
+- name: Rancher Labs
+  email: charts@rancher.com
