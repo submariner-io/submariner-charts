@@ -8,12 +8,12 @@ questions:
   group: "Container Images"
   subquestions:
   - variable: engine.image.repository
-    default: "oats87/submariner-engine"
+    default: "rancher/submariner"
     description: "Submariner Engine Image Repository"
     type: string
     label: Submariner Engine Image Repository
   - variable: engine.image.tag
-    default: "dev"
+    default: "v0.0.1"
     description: "Submariner Engine Image Tag"
     type: string
     label: Submariner Engine Image Tag
@@ -26,12 +26,12 @@ questions:
   group: "Container Images"
   subquestions:
   - variable: routeAgent.image.repository
-    default: "oats87/submariner-route-agent"
+    default: "rancher/submariner-route-agent"
     description: "Submariner Route Agent Image Repository"
     type: string
     label: Submariner Route Agent Image Repository
   - variable: routeAgent.image.tag
-    default: "dev"
+    default: "v0.0.1"
     description: "Submariner Route Agent Image Tag"
     type: string
     label: Submariner Route Agent Image Tag
@@ -70,7 +70,7 @@ questions:
   label: "Broker Server"
   description: "Broker server to use (without the https://)"
 - variable: broker.insecure
-  type: bool
+  type: boolean
   default: false
   show_subquestion_if: false
   group: "Broker Configuration"
