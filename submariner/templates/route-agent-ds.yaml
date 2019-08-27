@@ -47,6 +47,11 @@ spec:
           privileged: true
           readOnlyRootFilesystem: false
           runAsNonRoot: false
+        volumeMounts:
+        # Because we don't actually run iptables locally, but chroot in to the host
+        - mountPath: /host
+          name: host-slash
+          readOnly: true
 {{- with .Values.routeAgent.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
@@ -59,3 +64,7 @@ spec:
       affinity:
 {{ toYaml . | indent 8 }}
 {{- end }}
+      volumes:
+      - name: host-slash
+        hostPath:
+          path: /
