@@ -6,7 +6,6 @@ env:
     - HELM_TGZ=helm-v2.14.3-linux-amd64.tar.gz
     - TARGET_BR=gh-pages
     - GH_URL=https://dimaunx.github.io/submariner-charts
-    - REPO_URL=https://github.com/dimaunx/submariner-charts.git
     - CHARTS_DIR=charts
     - YAMLLINT_VERSION=1.17.0
 
@@ -35,15 +34,14 @@ after_success:
         helm dep update $dir
         helm package $dir
       done
-      git clone ${REPO_URL} out && cd out
-      git checkout gh-pages
+      REPO_URL=`git config remote.origin.url`
+      git clone ${REPO_URL} out && cd out && git checkout gh-pages && mkdir -p ${CHARTS_DIR}
       cp -f ../submariner-*.tgz ${CHARTS_DIR}/
       if [ -f charts/index.yaml ]; then
         helm repo index ${CHARTS_DIR} --url ${GH_URL} --merge index.yaml
       else
         helm repo index ${CHARTS_DIR} --url ${GH_URL}
       fi
-      git status
       git config user.name "Travis CI"
       git config user.email "travis@travis-ci.org"
       git add -f ${CHARTS_DIR}/*
