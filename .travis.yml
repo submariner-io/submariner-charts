@@ -7,6 +7,7 @@ env:
     - HELM_TGZ=helm-v2.14.3-linux-amd64.tar.gz
     - TARGET_BR=gh-pages
     - GH_URL=https://dimaunx.github.io/submariner-charts
+    - CHARTS_DIR=charts
     - YAMLLINT_VERSION=1.17.0
 
 install:
@@ -38,9 +39,9 @@ after_success:
       cp -f submariner-*.tgz charts/
       # Indexing of charts
       if [ -f index.yaml ]; then
-       helm repo index charts --url ${GH_URL} --merge index.yaml
+       helm repo index ${CHARTS_DIR} --url ${GH_URL} --merge index.yaml
       else
-       helm repo index charts --url ${GH_URL}
+       helm repo index ${CHARTS_DIR} --url ${GH_URL}
       fi
       git diff --quiet
       if [ $? != 0 ]; then

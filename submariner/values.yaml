@@ -27,9 +27,9 @@ engine:
     tag: v0.0.1
     pullPolicy: Always
   resources: {}
-    # limits:
+  # limits:
     # cpu: 100m
-  # memory: 100Mi
+    # memory: 100Mi
   nodeSelectorEnabled: true
   nodeSelector: {}
   tolerations: []
@@ -40,9 +40,9 @@ routeAgent:
     tag: v0.0.1
     pullPolicy: Always
   resources: {}
-    # limits:
-  # cpu: 100m
-  # memory: 100Mi
+  # limits:
+    # cpu: 100m
+    # memory: 100Mi
   nodeSelector: {}
   tolerations: []
   affinity: {}
