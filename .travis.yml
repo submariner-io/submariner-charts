@@ -1,4 +1,3 @@
----
 language: python
 
 env:
@@ -18,17 +17,19 @@ install:
   - sudo pip install yamllint=="${YAMLLINT_VERSION}"
 
 script:
-  - for dir in submariner submariner-k8s-broker; do
-      helm lint $dir
-      if [ $? != 0 ]; then
-        travis_terminate 1
-      fi
+  - >
+    for dir in submariner submariner-k8s-broker; do
+     helm lint $dir
+     if [ $? != 0 ]; then
+      travis_terminate 1
+     fi
     done
   - yamllint -c .yamllint.yml -s $(find . -type f -name "Chart.yaml")
   - yamllint -c .yamllint.yml -s $(find . -type f -name "values.yaml")
 
 after_success:
-  - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+  - >
+    if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then
       for dir in submariner submariner-k8s-broker; do
         helm dep update ${REPO_DIR}/$dir
         helm package ${REPO_DIR}/$dir
@@ -36,14 +37,14 @@ after_success:
       git checkout gh-pages
       cp -f submariner-*.tgz charts/
       if [ -f index.yaml ]; then
-      helm repo index ${CHARTS_DIR} --url ${GH_URL} --merge index.yaml
+        helm repo index ${CHARTS_DIR} --url ${GH_URL} --merge index.yaml
       else
-      helm repo index ${CHARTS_DIR} --url ${GH_URL}
+        helm repo index ${CHARTS_DIR} --url ${GH_URL}
       fi
       git config user.name "Travis CI"
       git config user.email "travis@travis-ci.org"
       git add -f charts/*
-      git commit -m "Travis build ${TRAVIS_BUILD_NUMBER}"
+      git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
       git remote add origin-pages https://${GH_TOKEN}@github.com/dimaunx/submariner-charts.git > /dev/null 2>&1
       git push --quiet --set-upstream origin-pages gh-pages
     fi
