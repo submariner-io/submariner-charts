@@ -6,7 +6,7 @@ description: Submariner
 keywords:
 home: https://submariner.io/
 sources:
-- https://github.com/rancher/submariner-charts
+- https://submariner-io.github.io/submariner-charts/charts
 maintainers:
 - name: Rancher Labs
   email: charts@rancher.com

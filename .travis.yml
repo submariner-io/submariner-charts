@@ -5,7 +5,7 @@ env:
     - HELM_URL=https://storage.googleapis.com/kubernetes-helm
     - HELM_TGZ=helm-v2.14.3-linux-amd64.tar.gz
     - TARGET_BR=gh-pages
-    - GH_URL=https://submariner-io.github.io/submariner-charts/
+    - GH_URL=https://submariner-io.github.io/submariner-charts/charts
     - CHARTS_DIR=charts
     - YAMLLINT_VERSION=1.17.0
 
