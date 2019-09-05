@@ -20,7 +20,7 @@ script:
   # Check charts format
   - >
     for dir in submariner submariner-k8s-broker; do
-     helm lint ${REPO_DIR}/$dir
+     helm lint $dir
      if [ $? != 0 ]; then
       travis_terminate 1
      fi
