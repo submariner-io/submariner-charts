@@ -1,6 +1,10 @@
 ---
 extends: default
 rules:
+  comments:
+    level: warning
+  comments-indentation:
+    level: warning
   line-length:
     max: 150
   braces:
