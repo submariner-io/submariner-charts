@@ -17,7 +17,6 @@ install:
   - sudo pip install yamllint=="${YAMLLINT_VERSION}"
 
 script:
-  # Check charts format
   - >
     for dir in submariner submariner-k8s-broker; do
      helm lint $dir
@@ -25,7 +24,6 @@ script:
       travis_terminate 1
      fi
     done
-  # Check YAML styling
   - yamllint -c .yamllint.yml -s $(find . -type f -name "Chart.yaml")
   - yamllint -c .yamllint.yml -s $(find . -type f -name "values.yaml")
 
