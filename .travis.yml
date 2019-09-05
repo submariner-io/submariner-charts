@@ -34,9 +34,10 @@ after_success:
         helm dep update $dir
         helm package $dir
       done
+      git clone ${GH_URL} out && cd out
       git checkout gh-pages
-      cp -f submariner-*.tgz charts/
-      if [ -f index.yaml ]; then
+      cp -f ../submariner-*.tgz ${CHARTS_DIR}/
+      if [ -f charts/index.yaml ]; then
         helm repo index ${CHARTS_DIR} --url ${GH_URL} --merge index.yaml
       else
         helm repo index ${CHARTS_DIR} --url ${GH_URL}
@@ -44,7 +45,7 @@ after_success:
       git status
       git config user.name "Travis CI"
       git config user.email "travis@travis-ci.org"
-      git add -f charts/*
+      git add -f ${CHARTS_DIR}/*
       git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
       git remote add origin-pages https://${GH_TOKEN}@github.com/dimaunx/submariner-charts.git > /dev/null 2>&1
       git push --quiet --set-upstream origin-pages gh-pages
