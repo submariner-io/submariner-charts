@@ -1,12 +1,12 @@
 ---
 name: submariner
-version: 0.0.1
-appVersion: v0.0.1
-description: Submariner
+version: 0.0.2
+appVersion: v0.0.2
+description: Submariner with custom ipsec ports support
 keywords:
 home: https://submariner.io/
 sources:
-- https://submariner-io.github.io/submariner-charts/charts
+  - https://submariner-io.github.io/submariner-charts/charts
 maintainers:
-- name: Rancher Labs
-  email: charts@rancher.com
+  - name: Rancher Labs
+    email: charts@rancher.com

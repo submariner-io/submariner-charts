@@ -21,6 +21,8 @@ rbac:
 ipsec:
   psk: ""
   debug: false
+  ikePort: 500
+  natPort: 4500
 engine:
   image:
     repository: rancher/submariner
@@ -28,7 +30,7 @@ engine:
     pullPolicy: Always
   resources: {}
     # limits:
-    # cpu: 100m
+  # cpu: 100m
   # memory: 100Mi
   nodeSelectorEnabled: true
   nodeSelector: {}
@@ -40,7 +42,7 @@ routeAgent:
     tag: v0.0.1
     pullPolicy: Always
   resources: {}
-    # limits:
+  # limits:
   # cpu: 100m
   # memory: 100Mi
   nodeSelector: {}
