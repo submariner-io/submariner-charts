@@ -97,6 +97,10 @@ spec:
           value: "{{ .Values.ipsec.psk }}"
         - name: CE_IPSEC_DEBUG
           value: "{{ .Values.ipsec.debug }}"
+        - name: CE_IPSEC_IKEPORT
+          value: "{{ .Values.ipsec.ikePort }}"
+        - name: CE_IPSEC_NATTPORT
+          value: "{{ .Values.ipsec.natPort }}"
         image: {{ .Values.engine.image.repository }}:{{ .Values.engine.image.tag }}
         imagePullPolicy: {{ .Values.engine.image.pullPolicy }}
         name: submariner
