@@ -13,7 +13,7 @@ questions:
     type: string
     label: Submariner Engine Image Repository
   - variable: engine.image.tag
-    default: "v0.0.1"
+    default: "v0.0.2"
     description: "Submariner Engine Image Tag"
     type: string
     label: Submariner Engine Image Tag
@@ -31,7 +31,7 @@ questions:
     type: string
     label: Submariner Route Agent Image Repository
   - variable: routeAgent.image.tag
-    default: "v0.0.1"
+    default: "v0.0.2"
     description: "Submariner Route Agent Image Tag"
     type: string
     label: Submariner Route Agent Image Tag

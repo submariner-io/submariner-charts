@@ -26,7 +26,7 @@ ipsec:
 engine:
   image:
     repository: rancher/submariner
-    tag: v0.0.1
+    tag: v0.0.2
     pullPolicy: Always
   resources: {}
     # limits:
@@ -39,7 +39,7 @@ engine:
 routeAgent:
   image:
     repository: rancher/submariner-route-agent
-    tag: v0.0.1
+    tag: v0.0.2
     pullPolicy: Always
   resources: {}
   # limits:
