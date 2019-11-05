@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   submariner:
   - appVersion: v0.0.2
-    created: "2019-09-27T12:20:10.442287061Z"
+    created: "2019-11-05T15:08:27.478988667Z"
     description: Submariner with custom ipsec ports support
-    digest: a664dd7f1e1a210c80f147f0dcdf0f99ed737cca1818143aecf5160e6a5068f2
+    digest: 115a51fd8001cbef49cfceb798a00461efe352e8f06687da3c9446655d5f9861
     home: https://submariner.io/
     maintainers:
     - email: charts@rancher.com
@@ -16,7 +16,7 @@ entries:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-0.0.2.tgz
     version: 0.0.2
   - appVersion: v0.0.1
-    created: "2019-09-27T12:20:10.441485121Z"
+    created: "2019-11-05T15:08:27.478121637Z"
     description: Submariner
     digest: 3519f07bb8caa3b3dab5137e3fc7dec4862eb0f306d196d882c0f416033d89df
     home: https://submariner.io/
@@ -31,9 +31,9 @@ entries:
     version: 0.0.1
   submariner-k8s-broker:
   - appVersion: v0.0.1
-    created: "2019-09-27T12:20:10.442857088Z"
+    created: "2019-11-05T15:08:27.479581179Z"
     description: Submariner Kubernetes Broker
-    digest: 9d890c8d8d81cebbeb741c3336811c793d229e0b890cf78f0659e29f3b305386
+    digest: 0925fe4b613c304fd01480b10ae71adb793649015d742a5f84b54a7dab8b36d3
     home: https://submariner.io/
     maintainers:
     - email: charts@rancher.com
@@ -44,4 +44,4 @@ entries:
     urls:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-k8s-broker-0.0.1.tgz
     version: 0.0.1
-generated: "2019-09-27T12:20:10.440230608Z"
+generated: "2019-11-05T15:08:27.476349619Z"
