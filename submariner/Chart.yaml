@@ -1,8 +1,8 @@
 ---
 name: submariner
-version: 0.0.2
-appVersion: v0.0.2
-description: Submariner with custom ipsec ports support
+version: 0.0.3
+appVersion: v0.0.3
+description: k8s 1.16.x support
 keywords:
 home: https://submariner.io/
 sources:
