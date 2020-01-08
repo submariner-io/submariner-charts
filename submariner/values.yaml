@@ -4,6 +4,7 @@ submariner:
   token: ""
   clusterCidr: "10.42.0.0/16"
   serviceCidr: "10.43.0.0/16"
+  globalCidr: ""
   natEnabled: false
   colorCodes: blue
   debug: false
