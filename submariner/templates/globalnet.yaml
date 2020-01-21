@@ -1,3 +1,4 @@
+{{- if ne .Values.submariner.globalCidr "" }}
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -21,11 +22,7 @@ spec:
       serviceAccountName: submariner-globalnet
       serviceAccount: submariner-globalnet
       nodeSelector:
-{{- if eq .Values.submariner.globalCidr "" }}
-        nowhere: 'noplace'
-{{- else }}
         submariner.io/gateway: 'true'
-{{- end }}
       containers:
         - name: {{ template "submariner.fullname" . }}-globalnet
           image: submariner-globalnet:local
@@ -33,8 +30,6 @@ spec:
           env:
             - name: SUBMARINER_CLUSTERID
               value: '{{ .Values.submariner.clusterId }}'
-            - name: SUBMARINER_GLOBALCIDR
-              value: '{{ .Values.submariner.globalCidr }}'
             - name: SUBMARINER_EXCLUDENS
               value: 'submariner,kube-system,operators'
             - name: SUBMARINER_NAMESPACE
@@ -56,4 +51,4 @@ spec:
         - name: host-slash
           hostPath:
             path: /
-
+{{- end }}
