@@ -56,3 +56,6 @@ serviceAccounts:
   routeAgent:
     create: true
     name: ""
+  globalnet:
+    create: false
+    name: ""
