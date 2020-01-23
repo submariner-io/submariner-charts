@@ -61,4 +61,34 @@ subjects:
 - kind: ServiceAccount
   name: {{ template "submariner.routeAgentServiceAccountName" . }}
   namespace: {{ .Release.Namespace }}
+---
+{{- if ne .Values.submariner.globalCidr "" }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ template "submariner.fullname" . }}:globalnet
+rules:
+- apiGroups: [""]
+  resources: ["services", "namespaces", "pods"]
+  verbs: ["get", "list", "watch", "update"]
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get"]
+- apiGroups: ["submariner.io"]
+  resources: ["endpoints"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ template "submariner.fullname" . }}:globalnet
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ template "submariner.fullname" . }}:globalnet
+subjects:
+- kind: ServiceAccount
+  name: {{ template "submariner.globalnetServiceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+{{- end -}}
 {{- end -}}
