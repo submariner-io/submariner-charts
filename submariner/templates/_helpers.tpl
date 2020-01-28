@@ -52,3 +52,14 @@ Create the name of the submariner-route-agent service account to use
     {{ default "default" .Values.serviceAccounts.routeAgent.name }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Create the name of the submariner-globalnet service account to use
+*/}}
+{{- define "submariner.globalnetServiceAccountName" -}}
+{{- if .Values.serviceAccounts.globalnet.create -}}
+    {{ default (printf "%s-globalnet" (include "submariner.fullname" .)) .Values.serviceAccounts.globalnet.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccounts.globalnet.name }}
+{{- end -}}
+{{- end -}}

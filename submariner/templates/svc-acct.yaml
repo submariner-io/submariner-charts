@@ -21,3 +21,15 @@ metadata:
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
 {{- end }}
+---
+{{- if .Values.serviceAccounts.globalnet.create }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ template "submariner.globalnetServiceAccountName" . }}
+  labels:
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+    chart: {{ template "submariner.chart" . }}
+    app: {{ template "submariner.name" . }}
+{{- end }}

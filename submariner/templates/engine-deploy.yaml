@@ -60,6 +60,8 @@ spec:
           value: "{{ .Values.submariner.clusterCidr }}"
         - name: SUBMARINER_SERVICECIDR
           value: "{{ .Values.submariner.serviceCidr }}"
+        - name: SUBMARINER_GLOBALCIDR
+          value: "{{ .Values.submariner.globalCidr }}"
         - name: SUBMARINER_TOKEN
           value: "{{ .Values.submariner.apiToken }}"
         - name: SUBMARINER_CLUSTERID
