@@ -75,7 +75,7 @@ rules:
   resources: ["nodes"]
   verbs: ["get"]
 - apiGroups: ["submariner.io"]
-  resources: ["endpoints"]
+  resources: ["endpoints", "clusters"]
   verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
