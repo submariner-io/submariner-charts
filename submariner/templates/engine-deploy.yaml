@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   labels:
     heritage: {{ .Release.Service | quote }}
@@ -9,16 +9,13 @@ metadata:
     component: engine
   name: {{ template "submariner.fullname" . }}
 spec:
-  progressDeadlineSeconds: 600
-  replicas: 1
   revisionHistoryLimit: 5
   selector:
     matchLabels:
       app: {{ template "submariner.fullname" . }}-engine
   strategy:
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
