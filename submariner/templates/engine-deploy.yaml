@@ -100,6 +100,12 @@ spec:
           value: "{{ .Values.ipsec.ikePort }}"
         - name: CE_IPSEC_NATTPORT
           value: "{{ .Values.ipsec.natPort }}"
+        - name: LEADERSHIP_LEASEDURATION
+          value: "{{ .Values.leadership.leaseDuration }}"
+        - name: LEADERSHIP_RENEWDEADLINE
+          value: "{{ .Values.leadership.renewDeadline }}"
+        - name: LEADERSHIP_RETRYPERIOD
+          value: "{{ .Values.leadership.retryPeriod }}"
         image: {{ .Values.engine.image.repository }}:{{ .Values.engine.image.tag }}
         imagePullPolicy: {{ .Values.engine.image.pullPolicy }}
         name: submariner
