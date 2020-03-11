@@ -49,6 +49,11 @@ routeAgent:
   nodeSelector: {}
   tolerations: []
   affinity: {}
+globalnet:
+  image:
+    repository: submariner-globalnet
+    tag: local
+    pullPolicy: IfNotPresent
 serviceAccounts:
   engine:
     create: true

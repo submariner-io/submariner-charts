@@ -25,8 +25,8 @@ spec:
         submariner.io/gateway: 'true'
       containers:
         - name: {{ template "submariner.fullname" . }}-globalnet
-          image: submariner-globalnet:local
-          imagePullPolicy: IfNotPresent
+          image: {{ .Values.globalnet.image.repository }}:{{ .Values.globalnet.image.tag }}
+          imagePullPolicy: {{ .Values.globalnet.image.pullPolicy }}
           env:
             - name: SUBMARINER_CLUSTERID
               value: '{{ .Values.submariner.clusterId }}'
