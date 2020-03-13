@@ -24,6 +24,7 @@ script:
 after_success:
   - >
     if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+      set -e
       for dir in submariner submariner-k8s-broker; do
         helm dep update $dir
         helm package $dir
