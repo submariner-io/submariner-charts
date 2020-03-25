@@ -71,6 +71,8 @@ spec:
           value: "{{ .Values.submariner.natEnabled }}"
         - name: SUBMARINER_BROKER
           value: "{{ .Values.broker.type }}"
+        - name: SUBMARINER_CABLEDRIVER
+          value: "{{ .Values.submariner.cableDriver }}"
 {{- if eq .Values.broker.type "phpapi" }}
         - name: BROKER_PHPAPI_PROTO
           value: "{{ .Values.broker.proto }}"
