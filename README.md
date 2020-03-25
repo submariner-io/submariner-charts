@@ -31,6 +31,12 @@ Before serving the modified charts, the charts must be packaged for local usage.
 helm package ./submariner
 helm package ./submariner-k8s-broker
 ```
+Note: if you just installed helm, you have to init the helm, by running
+```bash
+helm init --client-only
+```
+ 
+
 
 Serve the packaged charts through a local helm repository:
 
@@ -87,9 +93,9 @@ Search the new repo for submariner charts:
 helm search -l test-repo
 ```
 
-### Modify submariner e2e.sh script to use your local test-repo.
+### Modify submariner e2e tests helm deployment script to use your local test-repo.
 
-Change the line from:
+In the file `scripts/kind-e2e/lib_helm_deploy_subm.sh` change the line from:
 
 ```bash
 helm repo add submariner-latest https://submariner-io.github.io/submariner-charts/charts
