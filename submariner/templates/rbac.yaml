@@ -13,7 +13,7 @@ rules:
   resources: ["configmaps"]
   verbs: ["create", "get", "list", "watch", "patch", "update"]
 - apiGroups: ["submariner.io"]
-  resources: ["clusters", "endpoints"]
+  resources: ["clusters", "endpoints", "gateways"]
   verbs: ["create", "get", "list", "watch", "patch", "update", "delete"]
 - apiGroups: [""]
   resources: ["events"]
@@ -30,7 +30,7 @@ metadata:
     app: {{ template "submariner.name" . }}
 rules:
 - apiGroups: ["submariner.io"]
-  resources: ["clusters", "endpoints"]
+  resources: ["clusters", "endpoints", "gateways"]
   verbs: ["create", "get", "list", "watch", "patch", "update"]
 - apiGroups: [""]
   resources: ["pods"]
@@ -94,7 +94,7 @@ rules:
   resources: ["services", "namespaces", "pods", "nodes"]
   verbs: ["get", "list", "watch", "update"]
 - apiGroups: ["submariner.io"]
-  resources: ["endpoints", "clusters"]
+  resources: ["clusters", "endpoints", "gateways"]
   verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
