@@ -95,7 +95,8 @@ helm search -l test-repo
 
 ### Modify submariner e2e tests helm deployment script to use your local test-repo.
 
-In the file `scripts/kind-e2e/lib_helm_deploy_subm.sh` change the line from:
+You can test your helm-charts with e2e tests from the [shipyard](https://github.com/submariner-io/shipyard) repository.
+In the file `scripts/shared/lib/deploy_helm` change the line from:
 
 ```bash
 helm repo add submariner-latest https://submariner-io.github.io/submariner-charts/charts
