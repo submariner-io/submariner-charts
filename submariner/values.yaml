@@ -8,6 +8,7 @@ submariner:
   natEnabled: false
   colorCodes: blue
   debug: false
+  serviceDiscovery: false
 crd:
   create: true
 broker:
@@ -58,6 +59,11 @@ globalnet:
     repository: submariner-globalnet
     tag: local
     pullPolicy: IfNotPresent
+lighthouse:
+  image:
+    repository: lighthouse-agent
+    tag: local
+    pullPolicy: IfNotPresent
 serviceAccounts:
   engine:
     create: true
@@ -66,5 +72,8 @@ serviceAccounts:
     create: true
     name: ""
   globalnet:
+    create: false
+    name: ""
+  lighthouse:
     create: false
     name: ""

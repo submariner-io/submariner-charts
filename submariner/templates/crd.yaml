@@ -40,4 +40,36 @@ spec:
     kind: Gateway
     plural: gateways
   scope: Namespaced
+---
+{{- if .Values.submariner.serviceDiscovery }}
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: multiclusterservices.lighthouse.submariner.io
+  annotations:
+    "helm.sh/hook": crd-install
+spec:
+  group: lighthouse.submariner.io
+  version: v1
+  names:
+    kind: MultiClusterService
+    plural: multiclusterservices
+    singular: multiclusterservice
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          properties:
+            clusterServiceInfo:
+              properties:
+                clusterID:
+                  type: "string"
+                clusterDomain:
+                  type: "string"
+                serviceIP:
+                  type: "string"
+                port:
+                  type: "integer"
+{{- end }}
 {{- end -}}
