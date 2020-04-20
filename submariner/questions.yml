@@ -130,3 +130,9 @@ questions:
   group: "Advanced Configuration"
   description: "Enable Charon debug mode"
   label: "Charon Enabled"
+- variable: submariner.cableDriver
+  type: string
+  default: ""
+  group: "Advanced Configuration"
+  description: "Cable driver implementation"
+  label: "Cable Driver"
