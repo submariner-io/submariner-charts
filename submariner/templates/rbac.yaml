@@ -109,5 +109,32 @@ subjects:
 - kind: ServiceAccount
   name: {{ template "submariner.globalnetServiceAccountName" . }}
   namespace: {{ .Release.Namespace }}
+---
+{{- end -}}
+{{- if .Values.submariner.serviceDiscovery }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ template "submariner.fullname" . }}:lighthouse
+rules:
+  - apiGroups: [""]
+    resources: ["services", "namespaces"]
+    verbs: ["get", "list", "watch", "update"]
+  - apiGroups: ["lighthouse.submariner.io"]
+    resources: ["multiclusterservices"]
+    verbs: ["create", "get", "list", "watch", "update", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ template "submariner.fullname" . }}:lighthouse
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ template "submariner.fullname" . }}:lighthouse
+subjects:
+  - kind: ServiceAccount
+    name: {{ template "submariner.lighthouseServiceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
 {{- end -}}
 {{- end -}}
