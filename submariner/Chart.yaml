@@ -1,7 +1,7 @@
 ---
 name: submariner
-version: 0.0.3
-appVersion: v0.0.3
+version: 0.0.4
+appVersion: v0.0.4
 description: k8s 1.16.x support
 keywords:
 home: https://submariner.io/
