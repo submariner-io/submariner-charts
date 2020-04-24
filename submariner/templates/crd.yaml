@@ -40,6 +40,11 @@ spec:
     kind: Gateway
     plural: gateways
   scope: Namespaced
+  additionalPrinterColumns:
+  - name: ha-status
+    type: string
+    description: High Availability Status of the Gateway
+    JSONPath: .status.haStatus
 ---
 {{- if .Values.submariner.serviceDiscovery }}
 apiVersion: apiextensions.k8s.io/v1beta1
