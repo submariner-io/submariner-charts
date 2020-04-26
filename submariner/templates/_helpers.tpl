@@ -68,7 +68,7 @@ Create the name of the submariner-globalnet service account to use
 Create the name of the submariner-lighthouse service account to use
 */}}
 {{- define "submariner.lighthouseServiceAccountName" -}}
-{{- if .Values.submariner.serviceDiscovery }}
+{{- if .Values.submariner.serviceDiscovery -}}
     {{ default (printf "%s-lighthouse" (include "submariner.fullname" .)) .Values.serviceAccounts.lighthouse.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccounts.lighthouse.name }}
