@@ -8,6 +8,7 @@ env:
     - GH_URL=https://submariner-io.github.io/submariner-charts/charts
     - CHARTS_DIR=charts
     - YAMLLINT_VERSION=1.17.0
+    - HELM_FLAGS='--set submariner.serviceDiscovery=true,serviceAccounts.globalnet.create=true,globalCidr="169.254.0.0/16"'
 
 install:
   - wget -q ${HELM_URL}/${HELM_TGZ}
@@ -17,7 +18,7 @@ install:
   - sudo pip install yamllint=="${YAMLLINT_VERSION}"
 
 script:
-  - for dir in submariner submariner-k8s-broker; do helm lint $dir; done
+  - for dir in submariner submariner-k8s-broker; do helm lint $dir $HELM_FLAGS; done
   - yamllint -c .yamllint.yml -s $(find . -type f -name "Chart.yaml")
   - yamllint -c .yamllint.yml -s $(find . -type f -name "values.yaml")
 
