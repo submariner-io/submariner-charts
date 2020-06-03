@@ -74,3 +74,10 @@ Create the name of the submariner-lighthouse service account to use
     {{ default "default" .Values.serviceAccounts.lighthouse.name }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Create the name of the submariner-lighthouse-coredns service name to use
+*/}}
+{{- define "submariner.lighthouseDnsName" -}}
+{{- default (printf "%s-lighthouse-coredns" (include "submariner.fullname" .)) .Values.lighthouseCoredns.name }}
+{{- end -}}

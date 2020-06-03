@@ -118,7 +118,7 @@ metadata:
   name: {{ template "submariner.fullname" . }}:lighthouse
 rules:
   - apiGroups: [""]
-    resources: ["services", "namespaces"]
+    resources: ["services", "namespaces", "configmaps"]
     verbs: ["get", "list", "watch", "update"]
   - apiGroups: ["lighthouse.submariner.io"]
     resources: ["*"]
