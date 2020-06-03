@@ -64,6 +64,12 @@ lighthouse:
     repository: lighthouse-agent
     tag: local
     pullPolicy: IfNotPresent
+lighthouseCoredns:
+  name: ""
+  image:
+    repository: lighthouse-coredns
+    tag: local
+    pullPolicy: IfNotPresent
 serviceAccounts:
   engine:
     create: true
