@@ -22,7 +22,7 @@ spec:
         component: routeagent
     spec:
       serviceAccountName: {{ template "submariner.routeAgentServiceAccountName" . }}
-      terminationGracePeriodSeconds: 0
+      terminationGracePeriodSeconds: 10
       hostNetwork: true
       containers:
       - name: routeagent

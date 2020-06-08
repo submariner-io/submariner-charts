@@ -21,6 +21,7 @@ spec:
       hostNetwork: true
       serviceAccountName: submariner-globalnet
       serviceAccount: submariner-globalnet
+      terminationGracePeriodSeconds: 10
       nodeSelector:
         submariner.io/gateway: 'true'
       containers:
@@ -31,7 +32,7 @@ spec:
             - name: SUBMARINER_CLUSTERID
               value: '{{ .Values.submariner.clusterId }}'
             - name: SUBMARINER_EXCLUDENS
-              value: 'submariner,kube-system,operators'
+              value: 'submariner-operator,kube-system,operators'
             - name: SUBMARINER_NAMESPACE
               value: '{{ .Release.Namespace }}'
           securityContext:
