@@ -25,7 +25,7 @@ spec:
             - /etc/coredns/Corefile
           image: {{ .Values.lighthouseCoredns.image.repository }}:{{ .Values.lighthouseCoredns.image.tag }}
           imagePullPolicy: {{ .Values.lighthouseCoredns.image.pullPolicy }}
-          name: {{ template "submariner.fullname" . }}-lighthouse-agent
+          name: {{ template "submariner.lighthouseDnsName" . }}
           volumeMounts:
             - mountPath: /etc/coredns
               name: config-volume
