@@ -26,8 +26,8 @@ ipsec:
   ikePort: 500
   natPort: 4500
 leadership:
-  leaseDuration: 5
-  renewDeadline: 3
+  leaseDuration: 10
+  renewDeadline: 5
   retryPeriod: 2
 engine:
   image:
