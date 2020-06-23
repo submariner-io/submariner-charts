@@ -30,6 +30,10 @@ spec:
           value: "{{ .Values.submariner.clusterId }}"
         - name: SUBMARINER_DEBUG
           value: "{{ .Values.submariner.debug }}"
+{{- if ne .Values.submariner.globalCidr "" }}
+        - name: SUBMARINER_GLOBALNET_ENABLED
+          value: "true"
+{{- end }}
         - name: BROKER_K8S_APISERVER
           value: "{{ .Values.broker.server }}"
         - name: BROKER_K8S_APISERVERTOKEN
