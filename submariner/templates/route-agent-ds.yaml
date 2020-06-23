@@ -28,7 +28,7 @@ spec:
       - name: routeagent
         command:
         - submariner-route-agent.sh
-        image: {{ .Values.routeAgent.image.repository }}:{{ .Values.routeAgent.image.tag }}
+        image: {{ .Values.routeAgent.image.repository }}:{{  default .Chart.AppVersion .Values.routeAgent.image.tag }}
         imagePullPolicy: {{ .Values.routeAgent.image.pullPolicy }}
         env:
         - name: SUBMARINER_NAMESPACE
