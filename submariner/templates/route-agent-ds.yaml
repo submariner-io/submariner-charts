@@ -12,6 +12,10 @@ spec:
   selector:
     matchLabels:
       app: {{ template "submariner.fullname" . }}-routeagent
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
     metadata:
       labels:
