@@ -13,6 +13,10 @@ spec:
   selector:
     matchLabels:
       app: {{ template "submariner.fullname" . }}-globalnet
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
     metadata:
       labels:
