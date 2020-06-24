@@ -48,7 +48,7 @@ spec:
           value: "{{ .Values.broker.ca }}"
 {{- end }}
         name: {{ template "submariner.fullname" . }}-lighthouse-agent
-        image: {{ .Values.lighthouse.image.repository }}:{{ .Values.lighthouse.image.tag }}
+        image: {{ .Values.lighthouse.image.repository }}:{{  default .Chart.AppVersion  .Values.lighthouse.image.tag }}
         imagePullPolicy: {{ .Values.lighthouse.image.pullPolicy }}
       restartPolicy: Always
       terminationGracePeriodSeconds: 0

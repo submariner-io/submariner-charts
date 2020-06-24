@@ -23,7 +23,7 @@ spec:
         - args:
             - -conf
             - /etc/coredns/Corefile
-          image: {{ .Values.lighthouseCoredns.image.repository }}:{{ .Values.lighthouseCoredns.image.tag }}
+          image: {{ .Values.lighthouseCoredns.image.repository }}:{{  default .Chart.AppVersion .Values.lighthouseCoredns.image.tag }}
           imagePullPolicy: {{ .Values.lighthouseCoredns.image.pullPolicy }}
           name: {{ template "submariner.lighthouseDnsName" . }}
           volumeMounts:

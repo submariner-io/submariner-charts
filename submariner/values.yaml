@@ -31,44 +31,38 @@ leadership:
   retryPeriod: 2
 engine:
   image:
-    repository: rancher/submariner
-    tag: v0.0.2
-    pullPolicy: Always
+    repository: quay.io/submariner/submariner
+    tag: ""
+    pullPolicy: IfNotPresent
   resources: {}
-    # limits:
-  # cpu: 100m
-  # memory: 100Mi
   nodeSelectorEnabled: true
   nodeSelector: {}
   tolerations: []
   affinity: {}
 routeAgent:
   image:
-    repository: rancher/submariner-route-agent
-    tag: v0.0.2
-    pullPolicy: Always
+    repository: quay.io/submariner/submariner-route-agent
+    tag: ""
+    pullPolicy: IfNotPresent
   resources: {}
-  # limits:
-  # cpu: 100m
-  # memory: 100Mi
   nodeSelector: {}
   tolerations: []
   affinity: {}
 globalnet:
   image:
-    repository: submariner-globalnet
-    tag: local
+    repository: quay.io/submariner/submariner-globalnet
+    tag: ""
     pullPolicy: IfNotPresent
 lighthouse:
   image:
-    repository: lighthouse-agent
-    tag: local
+    repository: quay.io/submariner/lighthouse-agent
+    tag: ""
     pullPolicy: IfNotPresent
 lighthouseCoredns:
   name: ""
   image:
-    repository: lighthouse-coredns
-    tag: local
+    repository: quay.io/submariner/lighthouse-coredns
+    tag: ""
     pullPolicy: IfNotPresent
 serviceAccounts:
   engine:

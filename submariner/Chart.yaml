@@ -1,8 +1,8 @@
 ---
 name: submariner
-version: 0.0.4
-appVersion: v0.0.4
-description: k8s 1.16.x support
+version: 0.4.0
+appVersion: 0.4.0
+description: Submariner enables direct networking between Pods and Services in different Kubernetes clusters
 keywords:
 home: https://submariner-io.github.io/
 sources:

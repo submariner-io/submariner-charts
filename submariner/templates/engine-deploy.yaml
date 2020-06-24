@@ -108,7 +108,7 @@ spec:
           value: "{{ .Values.leadership.renewDeadline }}"
         - name: LEADERSHIP_RETRYPERIOD
           value: "{{ .Values.leadership.retryPeriod }}"
-        image: {{ .Values.engine.image.repository }}:{{ .Values.engine.image.tag }}
+        image: {{ .Values.engine.image.repository }}:{{ default .Chart.AppVersion .Values.engine.image.tag }}
         imagePullPolicy: {{ .Values.engine.image.pullPolicy }}
         name: submariner
         resources:
