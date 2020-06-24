@@ -1,7 +1,7 @@
 ---
 name: submariner-k8s-broker
-version: 0.4.0
-appVersion: 0.4.0
+version: 0.4.1
+appVersion: 0.4.1
 description: Submariner Kubernetes Broker
 keywords:
 home: https://submariner.io/
