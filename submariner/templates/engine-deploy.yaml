@@ -130,5 +130,5 @@ spec:
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 1
       serviceAccountName: {{ template "submariner.engineServiceAccountName" . }}

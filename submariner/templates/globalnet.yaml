@@ -25,7 +25,7 @@ spec:
       hostNetwork: true
       serviceAccountName: submariner-globalnet
       serviceAccount: submariner-globalnet
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 2
       nodeSelector:
         submariner.io/gateway: 'true'
       containers:
