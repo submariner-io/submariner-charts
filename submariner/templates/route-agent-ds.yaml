@@ -14,7 +14,7 @@ spec:
       app: {{ template "submariner.fullname" . }}-routeagent
   updateStrategy:
     rollingUpdate:
-      maxUnavailable: 1
+      maxUnavailable: "100%"
     type: RollingUpdate
   template:
     metadata:
