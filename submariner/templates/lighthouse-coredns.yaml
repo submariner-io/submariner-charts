@@ -62,7 +62,7 @@ metadata:
   name: {{ template "submariner.lighthouseDnsName" . }}
 data:
   Corefile: |
-    supercluster.local:53 {
+    clusterset.local:53 {
 {{- if .Values.submariner.debug }}
         log
 {{- end }}
