@@ -8,12 +8,12 @@ questions:
   group: "Container Images"
   subquestions:
   - variable: engine.image.repository
-    default: "rancher/submariner"
+    default: "quay.io/submariner/submariner"
     description: "Submariner Engine Image Repository"
     type: string
     label: Submariner Engine Image Repository
   - variable: engine.image.tag
-    default: "v0.0.2"
+    default: "0.6.0"
     description: "Submariner Engine Image Tag"
     type: string
     label: Submariner Engine Image Tag
@@ -26,12 +26,12 @@ questions:
   group: "Container Images"
   subquestions:
   - variable: routeAgent.image.repository
-    default: "rancher/submariner-route-agent"
+    default: "quay.io/submariner/submariner-route-agent"
     description: "Submariner Route Agent Image Repository"
     type: string
     label: Submariner Route Agent Image Repository
   - variable: routeAgent.image.tag
-    default: "v0.0.2"
+    default: "0.6.0"
     description: "Submariner Route Agent Image Tag"
     type: string
     label: Submariner Route Agent Image Tag
