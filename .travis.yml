@@ -18,7 +18,7 @@ install:
   - sudo pip install yamllint=="${YAMLLINT_VERSION}"
 
 script:
-  - for dir in submariner submariner-k8s-broker; do helm lint $dir $HELM_FLAGS; done
+  - for dir in submariner submariner-k8s-broker submariner-operator; do helm lint $dir $HELM_FLAGS; done
   - yamllint -c .yamllint.yml -s $(find . -type f -name "Chart.yaml")
   - yamllint -c .yamllint.yml -s $(find . -type f -name "values.yaml")
 
@@ -26,7 +26,7 @@ after_success:
   - >
     if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then
       set -e
-      for dir in submariner submariner-k8s-broker; do
+      for dir in submariner submariner-k8s-broker submariner-operator; do
         helm dep update $dir
         helm package $dir
       done

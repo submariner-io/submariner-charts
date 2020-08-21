@@ -1,0 +1,15 @@
+FROM quay.io/submariner/shipyard-dapper-base:devel
+
+ARG DAPPER_HOST_ARCH
+ENV HOST_ARCH=${DAPPER_HOST_ARCH} ARCH=${DAPPER_HOST_ARCH} \
+    DAPPER_ENV="REPO TAG QUAY_USERNAME QUAY_PASSWORD GITHUB_SHA MAKEFLAGS CLUSTERS_ARGS DEPLOY_ARGS E2E_ARGS RELEASE_ARGS" \
+    DAPPER_SOURCE=/go/src/github.com/submariner-io/submariner-charts DAPPER_DOCKER_SOCKET=true
+ENV DAPPER_OUTPUT=${DAPPER_SOURCE}/output PATH=${DAPPER_SOURCE}/bin/:${PATH}
+
+WORKDIR ${DAPPER_SOURCE}
+
+# Override the Helm deployment scripts
+COPY deploy_helm /opt/shipyard/scripts/lib/
+
+ENTRYPOINT ["/opt/shipyard/scripts/entry"]
+CMD ["sh"]

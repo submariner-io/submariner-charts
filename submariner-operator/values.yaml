@@ -1,0 +1,57 @@
+---
+submariner:
+  clusterId: ""
+  token: ""
+  clusterCidr: ""
+  serviceCidr: ""
+  globalCidr: ""
+  natEnabled: false
+  colorCodes: blue
+  debug: false
+  serviceDiscovery: true
+broker:
+  type: k8s
+  server: example.k8s.apiserver
+  token: test
+  namespace: xyz
+  insecure: false
+  ca: ""
+rbac:
+  create: true
+ipsec:
+  psk: ""
+  debug: false
+  ikePort: 500
+  natPort: 4500
+leadership:
+  leaseDuration: 10
+  renewDeadline: 5
+  retryPeriod: 2
+operator:
+  image:
+    repository: quay.io/submariner/submariner-operator
+    tag: "0.7.0"
+    pullPolicy: IfNotPresent
+  resources: {}
+  tolerations: []
+  affinity: {}
+engine:
+  image:
+    repository: quay.io/submariner/submariner
+    tag: "0.7.0"
+serviceAccounts:
+  operator:
+    create: true
+    name: ""
+  engine:
+    create: true
+    name: ""
+  routeAgent:
+    create: true
+    name: ""
+  globalnet:
+    create: true
+    name: ""
+  lighthouse:
+    create: false
+    name: ""
