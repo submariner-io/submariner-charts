@@ -53,5 +53,5 @@ jobs:
       - name: Run yamllint
         uses: ibiqlik/action-yamllint@v1
         with:
-          file_or_dir: submariner/values.yaml submariner-k8s-broker/values.yaml submariner/Chart.yaml submariner-k8s-broker/Chart.yaml
+          file_or_dir: submariner/Chart.yaml submariner/values.yaml submariner-k8s-broker/Chart.yaml submariner-k8s-broker/values.yaml submariner-operator/Chart.yaml submariner-operator/values.yaml
           config_file: .yamllint.yml
