@@ -122,7 +122,7 @@ rules:
     verbs: ["get", "list", "watch", "update"]
   - apiGroups: ["discovery.k8s.io"]
     resources: ["endpointslices"]
-    verbs: ["create", "get", "list", "watch", "update", "delete"]
+    verbs: ["create", "get", "list", "watch", "update", "delete", "deletecollection"]
   - apiGroups: ["lighthouse.submariner.io"]
     resources: ["*"]
     verbs: ["create", "get", "list", "watch", "update", "delete"]
