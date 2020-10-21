@@ -43,3 +43,15 @@ jobs:
         with:
           files: .
           config_file: ".markdownlint.yml"
+
+  yaml-lint:
+    name: YAML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+      - name: Run yamllint
+        uses: ibiqlik/action-yamllint@v1
+        with:
+          file_or_dir: submariner/values.yaml submariner-k8s-broker/values.yaml submariner/Chart.yaml submariner-k8s-broker/Chart.yaml
+          config_file: .yamllint.yml
