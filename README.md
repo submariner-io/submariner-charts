@@ -1,17 +1,17 @@
 # submariner-charts
 
-Please see https://github.com/submariner-io/submariner for more information. This is only a supporting repository for Submariner
+Please see the [Helm docs on Submariner's website](https://submariner.io/deployment/helm/).
 
-# Dev workflow.
+## Dev workflow
 
 ### Prerequisites
 
 - [helm]
 - [docker] or [podman]
 
-### Create a fork and checkout.
+### Create a fork and checkout
 
-[Create a fork] of the original repository, clone it locally and checkout a new branch from master. 
+[Create a fork] of the original repository, clone it locally and checkout a new branch from master.
 
 Example:
 
@@ -31,12 +31,12 @@ Before serving the modified charts, the charts must be packaged for local usage.
 helm package ./submariner
 helm package ./submariner-k8s-broker
 ```
+
 Note: if you just installed helm, you have to init the helm, by running
+
 ```bash
 helm init --client-only
 ```
- 
-
 
 Serve the packaged charts through a local helm repository:
 
@@ -44,8 +44,8 @@ Serve the packaged charts through a local helm repository:
 docker run -d --rm --name helm-repo -p 8080:8080 -v $PWD:/charts -e DEBUG=true -e STORAGE=local -e STORAGE_LOCAL_ROOTDIR=/charts chartmuseum/chartmuseum
 ```
 
-or 
- 
+or
+
 ```bash
 sudo podman run -d --rm --name helm-repo -p 8080:8080 -v $PWD:/charts -e DEBUG=true -e STORAGE=local -e STORAGE_LOCAL_ROOTDIR=/charts chartmuseum/chartmuseum
 ```
@@ -93,7 +93,7 @@ Search the new repo for submariner charts:
 helm search -l test-repo
 ```
 
-### Modify submariner e2e tests helm deployment script to use your local test-repo.
+### Modify submariner e2e tests helm deployment script to use your local test-repo
 
 You can test your helm-charts with e2e tests from the [shipyard](https://github.com/submariner-io/shipyard) repository.
 In the file `scripts/shared/lib/deploy_helm` change the line from:
@@ -102,7 +102,7 @@ In the file `scripts/shared/lib/deploy_helm` change the line from:
 helm repo add submariner-latest https://submariner-io.github.io/submariner-charts/charts
 ```
 
-to 
+to
 
 ```bash
 internal_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' helm-repo)
