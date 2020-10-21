@@ -31,3 +31,15 @@ jobs:
         with:
           config-file: ".markdownlinkcheck.json"
           check-modified-files-only: "yes"
+
+  markdownlint:
+    name: Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+      - name: Run markdownlint
+        uses: nosborn/github-action-markdown-cli@v1.1.1
+        with:
+          files: .
+          config_file: ".markdownlint.yml"
