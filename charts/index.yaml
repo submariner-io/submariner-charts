@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   submariner:
   - appVersion: 0.6.0
-    created: "2020-10-21T13:19:36.244098946Z"
+    created: "2020-10-21T15:07:36.550502206Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
-    digest: e2aeba5c8888a180ca58696386d8415d8ac8654ff6920d6a80bd909c8c4ca7ce
+    digest: 9eafb98efddb6b6902e13e7430cfca09bced81b1a7cca3054e24e4eeae222120
     home: https://submariner-io.github.io/
     maintainers:
     - email: submariner-dev@googlegroups.com
@@ -17,7 +17,7 @@ entries:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-0.6.0.tgz
     version: 0.6.0
   - appVersion: 0.4.0
-    created: "2020-10-21T13:19:36.243675775Z"
+    created: "2020-10-21T15:07:36.549220908Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: e2f11fd1d231b7b1f70274effb471d962bbe7a90383e1213954d3a54af1d4687
@@ -32,7 +32,7 @@ entries:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-0.4.0.tgz
     version: 0.4.0
   - appVersion: v0.0.4
-    created: "2020-10-21T13:19:36.242938832Z"
+    created: "2020-10-21T15:07:36.54882908Z"
     description: k8s 1.16.x support
     digest: 6d814e86f82c5e1b7f6c9cd6ed7387b1defd1d56238dfcce654a9b1e2e8042cc
     home: https://submariner-io.github.io/
@@ -46,7 +46,7 @@ entries:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-0.0.4.tgz
     version: 0.0.4
   - appVersion: v0.0.3
-    created: "2020-10-21T13:19:36.242011837Z"
+    created: "2020-10-21T15:07:36.548443285Z"
     description: k8s 1.16.x support
     digest: 09d528190319d326b65707a2cb87d7f2697e23ac851521f2e156150bc51970db
     home: https://submariner.io/
@@ -60,7 +60,7 @@ entries:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-0.0.3.tgz
     version: 0.0.3
   - appVersion: v0.0.2
-    created: "2020-10-21T13:19:36.24125433Z"
+    created: "2020-10-21T15:07:36.54805966Z"
     description: Submariner with custom ipsec ports support
     digest: e7bdee6dd0b8d84a787e83c112efd948426a991a44529a77bfa36edba9606d8d
     home: https://submariner.io/
@@ -74,7 +74,7 @@ entries:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-0.0.2.tgz
     version: 0.0.2
   - appVersion: v0.0.1
-    created: "2020-10-21T13:19:36.240516684Z"
+    created: "2020-10-21T15:07:36.54770628Z"
     description: Submariner
     digest: 3519f07bb8caa3b3dab5137e3fc7dec4862eb0f306d196d882c0f416033d89df
     home: https://submariner.io/
@@ -89,9 +89,9 @@ entries:
     version: 0.0.1
   submariner-k8s-broker:
   - appVersion: 0.6.0
-    created: "2020-10-21T13:19:36.245025268Z"
+    created: "2020-10-21T15:07:36.552636249Z"
     description: Submariner Kubernetes Broker
-    digest: a638ebac8bb6a8fc16126c1781fd7e996370fce38056dd619be1df02193b436e
+    digest: 651290c4970ebb1e7398f237ddea4f16535b11e231a2a059ec4214bb180a0c29
     home: https://submariner-io.github.io/
     maintainers:
     - email: submariner-dev@googlegroups.com
@@ -103,7 +103,7 @@ entries:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-k8s-broker-0.6.0.tgz
     version: 0.6.0
   - appVersion: 0.4.1
-    created: "2020-10-21T13:19:36.244784608Z"
+    created: "2020-10-21T15:07:36.552112122Z"
     description: Submariner Kubernetes Broker
     digest: a3b99b87d9bd31b20c8faa35e43ea9df4dc369e8ccb05ac6edae93d2242cf8ba
     home: https://submariner-io.github.io/
@@ -117,7 +117,7 @@ entries:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-k8s-broker-0.4.1.tgz
     version: 0.4.1
   - appVersion: v0.0.2
-    created: "2020-10-21T13:19:36.244548606Z"
+    created: "2020-10-21T15:07:36.551565621Z"
     description: Submariner Kubernetes Broker
     digest: efc0faba08ed579c6729d02e8d2a5d9826f3bec4119258ae806b30b7625c4150
     home: https://submariner-io.github.io/
@@ -131,7 +131,7 @@ entries:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-k8s-broker-0.0.2.tgz
     version: 0.0.2
   - appVersion: v0.0.1
-    created: "2020-10-21T13:19:36.244325923Z"
+    created: "2020-10-21T15:07:36.551027035Z"
     description: Submariner Kubernetes Broker
     digest: a5961dd730ee2c593e86a45c566ce62846fdb1a60b235be4561246d80ec0051e
     home: https://submariner.io/
@@ -144,4 +144,4 @@ entries:
     urls:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-k8s-broker-0.0.1.tgz
     version: 0.0.1
-generated: "2020-10-21T13:19:36.239202608Z"
+generated: "2020-10-21T15:07:36.547149558Z"
