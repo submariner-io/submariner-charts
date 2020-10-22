@@ -1,0 +1,15 @@
+---
+name: Deploy
+
+on:
+  pull_request:
+
+jobs:
+  deploy:
+    name: Helm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+      - name: Deploy Submariner using Helm
+        run: make deploy
