@@ -1,0 +1,24 @@
+apiVersion: submariner.io/v1alpha1
+kind: Submariner
+metadata:
+  name: submariner
+  namespace: submariner-operator
+spec:
+  broker: k8s
+  brokerK8sApiServer: {{ .Values.broker.server }}
+  brokerK8sApiServerToken: {{ .Values.broker.token }}
+  brokerK8sCA: {{ .Values.broker.ca }}
+  brokerK8sRemoteNamespace: {{ .Values.broker.namespace }}
+  ceIPSecDebug: {{ .Values.ipsec.debug }}
+  ceIPSecIKEPort: {{ .Values.ipsec.ikePort }}
+  ceIPSecNATTPort: {{ .Values.ipsec.natPort }}
+  ceIPSecPSK: {{ .Values.ipsec.psk }}
+  clusterCIDR: "{{ .Values.submariner.clusterCidr }}"
+  clusterID: {{ .Values.submariner.clusterId }}
+  colorCodes: {{ .Values.submariner.colorCodes }}
+  debug: {{ .Values.submariner.debug }}
+  namespace: {{ .Release.Namespace }}
+  natEnabled: {{ .Values.submariner.natEnabled }}
+  repository: {{ .Values.submariner.images.repository }}
+  version: {{ .Values.submariner.images.tag }}
+  serviceCIDR: "{{ .Values.submariner.serviceCidr }}"

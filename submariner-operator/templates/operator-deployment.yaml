@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+    chart: {{ template "submariner.chart" . }}
+    app: {{ template "submariner.fullname" . }}
+    component: engine
+  name: {{ template "submariner.fullname" . }}
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      name: {{ template "submariner.fullname" . }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: {{ template "submariner.fullname" . }}
+    spec:
+      containers:
+      - command:
+        - submariner-operator
+        env:
+        - name: WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: OPERATOR_NAME
+          value: submariner-operator
+        image: {{ .Values.operator.image.repository }}:{{ default .Chart.AppVersion .Values.operator.image.tag }}
+        imagePullPolicy: {{ .Values.operator.image.pullPolicy }}
+        name: submariner-operator
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: {{ template "submariner.fullname" . }}
+      serviceAccountName: {{ template "submariner.fullname" . }}
+      terminationGracePeriodSeconds: 30
