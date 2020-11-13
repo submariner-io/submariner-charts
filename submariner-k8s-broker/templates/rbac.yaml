@@ -18,9 +18,6 @@ rules:
 - apiGroups: ["discovery.k8s.io"]
   resources: ["endpointslices"]
   verbs: ["create", "get", "list", "watch","patch", "update", "delete"]
-- apiGroups: ["multicluster.x-k8s.io"]
-  resources: ["*"]
-  verbs: ["create", "get", "list", "watch", "update", "delete"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
