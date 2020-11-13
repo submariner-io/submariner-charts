@@ -4,7 +4,6 @@ kind: CustomResourceDefinition
 metadata:
   name: submariners.submariner.io
   annotations:
-    "helm.sh/hook": crd-install
     controller-gen.kubebuilder.io/version: v0.3.0
 spec:
   group: submariner.io
