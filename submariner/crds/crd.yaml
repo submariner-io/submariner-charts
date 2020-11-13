@@ -1,10 +1,7 @@
-{{- if .Values.crd.create -}}
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
   name: clusters.submariner.io
-  annotations:
-    "helm.sh/hook": crd-install
 spec:
   group: submariner.io
   version: v1
@@ -17,8 +14,6 @@ apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
   name: endpoints.submariner.io
-  annotations:
-    "helm.sh/hook": crd-install
 spec:
   group: submariner.io
   version: v1
@@ -31,8 +26,6 @@ apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
   name: gateways.submariner.io
-  annotations:
-    "helm.sh/hook": crd-install
 spec:
   group: submariner.io
   version: v1
@@ -46,13 +39,10 @@ spec:
     description: High Availability Status of the Gateway
     JSONPath: .status.haStatus
 ---
-{{- if .Values.submariner.serviceDiscovery }}
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
   name: multiclusterservices.lighthouse.submariner.io
-  annotations:
-    "helm.sh/hook": crd-install
 spec:
   group: lighthouse.submariner.io
   version: v1
@@ -81,8 +71,6 @@ apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
   name: serviceexports.lighthouse.submariner.io
-  annotations:
-    "helm.sh/hook": crd-install
 spec:
   group: lighthouse.submariner.io
   version: v2alpha1
@@ -96,8 +84,6 @@ apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
   name: serviceimports.lighthouse.submariner.io
-  annotations:
-    "helm.sh/hook": crd-install
 spec:
   group: lighthouse.submariner.io
   version: v2alpha1
@@ -111,8 +97,6 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: serviceexports.multicluster.x-k8s.io
-  annotations:
-    "helm.sh/hook": crd-install
 spec:
   group: multicluster.x-k8s.io
   scope: Namespaced
@@ -194,8 +178,6 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: serviceimports.multicluster.x-k8s.io
-  annotations:
-    "helm.sh/hook": crd-install
 spec:
   group: multicluster.x-k8s.io
   scope: Namespaced
@@ -340,5 +322,3 @@ spec:
                   x-kubernetes-list-map-keys:
                     - cluster
                   x-kubernetes-list-type: map
-{{- end }}
-{{- end -}}
