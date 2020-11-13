@@ -19,7 +19,7 @@ function setup_broker() {
     else
         echo "Installing submariner broker..."
         # shellcheck disable=SC2086 # Split on purpose
-        helm install "${SUBMARINER_BROKER_NS}" ./submariner-k8s-broker \
+        helm install "${SUBMARINER_BROKER_NS}" ./charts/submariner-k8s-broker \
              --create-namespace \
              --kube-context "${cluster}" \
              --namespace "${SUBMARINER_BROKER_NS}" \
@@ -43,7 +43,7 @@ function helm_install_subm() {
     echo "Installing Submariner..."
     # shellcheck disable=SC2086 # Split on purpose
     helm --kube-context "${cluster}" install submariner-operator \
-        ./submariner-operator \
+        ./charts/submariner-operator \
         --create-namespace \
         --namespace "${SUBM_NS}" \
         --set ipsec.psk="${SUBMARINER_PSK}" \

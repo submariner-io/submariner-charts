@@ -28,8 +28,8 @@ Now you can modify the helm charts according to your needs.
 Before serving the modified charts, the charts must be packaged for local usage.
 
 ```bash
-helm package ./submariner
-helm package ./submariner-k8s-broker
+helm package ./charts/submariner
+helm package ./charts/submariner-k8s-broker
 ```
 
 Note: if you just installed helm, you have to init the helm, by running
