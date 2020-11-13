@@ -6,7 +6,7 @@ include $(SHIPYARD_DIR)/Makefile.inc
 
 CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings
 override CLUSTERS_ARGS += $(CLUSTER_SETTINGS_FLAG)
-override DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG) --deploytool helm
+override DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG) --deploytool helm --deploytool_broker_args '--set submariner.serviceDiscovery=true'
 export DEPLOY_ARGS
 
 # Targets to make
