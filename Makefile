@@ -8,6 +8,10 @@ CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings
 override CLUSTERS_ARGS += $(CLUSTER_SETTINGS_FLAG)
 override DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG) --deploytool helm --deploytool_broker_args '--set submariner.serviceDiscovery=true'
 export DEPLOY_ARGS
+GH_URL=https://submariner-io.github.io/submariner-charts/charts
+CHARTS_DIR=charts
+CHARTS_VERSION=0.7.0
+REPO_URL=$(shell git config remote.origin.url)
 
 # Targets to make
 
@@ -24,7 +28,23 @@ preload-images:
 		import_image quay.io/submariner/$${image}; \
 	done
 
-.PHONY: preload-images
+$(CHARTS_DIR):
+	mkdir -p $(CHARTS_DIR)
+
+$(CHARTS_DIR)/%: $(CHARTS_DIR)
+	helm dep update $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
+	helm package --version $(CHARTS_VERSION) $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
+	mv -f $(@F) $@
+
+release: $(CHARTS_DIR)/submariner-$(CHARTS_VERSION).tgz $(CHARTS_DIR)/submariner-k8s-broker-$(CHARTS_VERSION).tgz $(CHARTS_DIR)/submariner-operator-$(CHARTS_VERSION).tgz
+	git checkout gh-pages
+	if [ -f $(CHARTS_DIR)/index.yaml ]; then \
+	  helm repo index $(CHARTS_DIR) --url $(GH_URL) --merge $(CHARTS_DIR)/index.yaml; \
+	else \
+	  helm repo index $(CHARTS_DIR) --url $(GH_URL); \
+	fi
+
+.PHONY: preload-images release
 
 else
 
