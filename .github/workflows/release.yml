@@ -2,6 +2,7 @@
 name: Release Charts
 
 on:
+  pull_request:
   push:
     branches:
       - master
