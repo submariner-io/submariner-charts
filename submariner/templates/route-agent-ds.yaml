@@ -41,10 +41,14 @@ spec:
           value: "{{ .Values.submariner.clusterId }}"
         - name: SUBMARINER_DEBUG
           value: "{{ .Values.submariner.debug }}"
-        - name: SUBMARINER_CLUSTERCIDR                                                                                                                                                        
+        - name: SUBMARINER_CLUSTERCIDR
           value: "{{ .Values.submariner.clusterCidr }}"
         - name: SUBMARINER_SERVICECIDR
           value: "{{ .Values.submariner.serviceCidr }}"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: "spec.nodeName"
         resources:
 {{ toYaml .Values.routeAgent.resources | indent 10 }}
         securityContext:
