@@ -1,16 +1,10 @@
 FROM quay.io/submariner/shipyard-dapper-base:devel
 
 ARG DAPPER_HOST_ARCH
-ARG UPX_LEVEL=-5
 ENV HOST_ARCH=${DAPPER_HOST_ARCH} ARCH=${DAPPER_HOST_ARCH} \
     DAPPER_ENV="REPO TAG QUAY_USERNAME QUAY_PASSWORD GITHUB_SHA MAKEFLAGS CLUSTERS_ARGS DEPLOY_ARGS E2E_ARGS RELEASE_ARGS" \
     DAPPER_SOURCE=/go/src/github.com/submariner-io/submariner-charts DAPPER_DOCKER_SOCKET=true
 ENV DAPPER_OUTPUT=${DAPPER_SOURCE}/output PATH=${DAPPER_SOURCE}/bin/:${PATH}
-ENV HELM_VERSION=v3.4.1
-
-RUN curl "https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" | tar -xzf - && \
-    mv linux-${ARCH}/helm /go/bin/ && chmod a+x /go/bin/helm && rm -rf linux-${ARCH} && \
-    find /go/bin -type f -executable -newercc /proc | xargs -r upx ${UPX_LEVEL}
 
 WORKDIR ${DAPPER_SOURCE}
 
