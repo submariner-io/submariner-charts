@@ -28,16 +28,13 @@ preload-images:
 		import_image quay.io/submariner/$${image}; \
 	done
 
-$(CHARTS_DIR):
-	mkdir -p $(CHARTS_DIR)
-
-$(CHARTS_DIR)/%: $(CHARTS_DIR)
+%.tgz:
 	helm dep update $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
 	helm package --version $(CHARTS_VERSION) $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
-	mv -f $(@F) $@
 
-release: $(CHARTS_DIR)/submariner-$(CHARTS_VERSION).tgz $(CHARTS_DIR)/submariner-k8s-broker-$(CHARTS_VERSION).tgz $(CHARTS_DIR)/submariner-operator-$(CHARTS_VERSION).tgz
+release: submariner-$(CHARTS_VERSION).tgz submariner-k8s-broker-$(CHARTS_VERSION).tgz submariner-operator-$(CHARTS_VERSION).tgz
 	git checkout gh-pages
+	mv *.tgz $(CHARTS_DIR)
 	if [ -f $(CHARTS_DIR)/index.yaml ]; then \
 	  helm repo index $(CHARTS_DIR) --url $(GH_URL) --merge $(CHARTS_DIR)/index.yaml; \
 	else \
