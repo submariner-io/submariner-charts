@@ -36,7 +36,7 @@ spec:
             - name: SUBMARINER_CLUSTERID
               value: '{{ .Values.submariner.clusterId }}'
             - name: SUBMARINER_EXCLUDENS
-              value: 'submariner-operator,kube-system,operators,openshift-monitoring'
+              value: 'submariner-operator,kube-system,operators,openshift-monitoring,openshift-dns'
             - name: SUBMARINER_NAMESPACE
               value: '{{ .Release.Namespace }}'
           securityContext:
