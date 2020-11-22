@@ -1,6 +1,6 @@
 # submariner-charts
 
-Please see the [Helm docs on Submariner's website](https://submariner.io/deployment/helm/).
+Please see the [Helm docs on Submariner's website](https://submariner.io/operations/deployment/helm/).
 
 ## Dev workflow
 
@@ -39,7 +39,7 @@ helm init --client-only
 ```
 
 Serve the packaged charts through a local helm repository:
-
+<!-- markdownlint-disable line-length -->
 ```bash
 docker run -d --rm --name helm-repo -p 8080:8080 -v $PWD:/charts -e DEBUG=true -e STORAGE=local -e STORAGE_LOCAL_ROOTDIR=/charts chartmuseum/chartmuseum
 ```
@@ -49,7 +49,7 @@ or
 ```bash
 sudo podman run -d --rm --name helm-repo -p 8080:8080 -v $PWD:/charts -e DEBUG=true -e STORAGE=local -e STORAGE_LOCAL_ROOTDIR=/charts chartmuseum/chartmuseum
 ```
-
+<!-- markdownlint-enable line-length -->
 Get the container internal ip:
 
 ```bash
