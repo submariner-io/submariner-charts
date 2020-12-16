@@ -2,12 +2,12 @@
 
 Please see the [Helm docs on Submariner's website](https://submariner.io/operations/deployment/helm/).
 
-## Dev workflow
+## Development workflow
 
 ### Prerequisites
 
-- [helm]
-- [docker] or [podman]
+- [Helm] v3
+- [Docker] or [Podman]
 
 ### Create a fork and checkout
 
@@ -21,96 +21,36 @@ cd submariner-charts
 git checkout -b new-feature
 ```
 
-Now you can modify the helm charts according to your needs.
-
-### Serve the modified charts
-
-Before serving the modified charts, the charts must be packaged for local usage.
-
-```bash
-helm package ./submariner
-helm package ./submariner-k8s-broker
-```
-
-Note: if you just installed helm, you have to init the helm, by running
-
-```bash
-helm init --client-only
-```
-
-Serve the packaged charts through a local helm repository:
-<!-- markdownlint-disable line-length -->
-```bash
-docker run -d --rm --name helm-repo -p 8080:8080 -v $PWD:/charts -e DEBUG=true -e STORAGE=local -e STORAGE_LOCAL_ROOTDIR=/charts chartmuseum/chartmuseum
-```
-
-or
-
-```bash
-sudo podman run -d --rm --name helm-repo -p 8080:8080 -v $PWD:/charts -e DEBUG=true -e STORAGE=local -e STORAGE_LOCAL_ROOTDIR=/charts chartmuseum/chartmuseum
-```
-<!-- markdownlint-enable line-length -->
-Get the container internal ip:
-
-```bash
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' helm-repo
-```
-
-The local container will serve the charts locally on port 8080.
-
-Get logs for the container:
-
-```bash
-docker logs -f helm-repo
-```
+Now you can modify the Helm charts according to your needs.
 
 ### Use the modified charts
 
-Init helm
+Locally-modified charts can be installed using `helm install`,
+referring to the local path; for example:
 
 ```bash
-helm init --client-only
+helm install submariner-k8s-broker ./submariner-k8s-broker ...
 ```
 
-Add your local repository to helm
+In the base directory of this repository, a local deployment using the
+local charts can be obtained by running the following command:
 
 ```bash
-internal_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' helm-repo)
-helm repo add test-repo http://$internal_ip:8080
+make deploy
 ```
 
-List the repos:
+This will start two kind clusters and deploy Submariner using the
+Broker and Operator charts.
 
 ```bash
-helm repo list
+make e2e
 ```
 
-You should be able to see test-repo in the list
-
-Search the new repo for submariner charts:
-
-```bash
-helm search -l test-repo
-```
-
-### Modify submariner e2e tests helm deployment script to use your local test-repo
-
-You can test your helm-charts with e2e tests from the [shipyard](https://github.com/submariner-io/shipyard) repository.
-In the file `scripts/shared/lib/deploy_helm` change the line from:
-
-```bash
-helm repo add submariner-latest https://submariner-io.github.io/submariner-charts/charts
-```
-
-to
-
-```bash
-internal_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' helm-repo)
-helm repo add submariner-latest http://$internal_ip:8080
-```
+will run the end-to-end test suite used to validate that Submariner is
+working correctly.
 
 <!--links-->
-[helm]: https://helm.sh/docs/using_helm/#installing-helm
-[docker]: https://docs.docker.com/install/
-[podman]: https://podman.io/getting-started/installation
+[Helm]: https://helm.sh/docs/using_helm/#installing-helm
+[Docker]: https://docs.docker.com/install/
+[Podman]: https://podman.io/getting-started/installation
 [Create a fork]: https://help.github.com/en/articles/fork-a-repo
