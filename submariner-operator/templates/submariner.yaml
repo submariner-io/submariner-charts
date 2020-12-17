@@ -22,3 +22,4 @@ spec:
   repository: {{ .Values.submariner.images.repository }}
   version: {{ .Values.submariner.images.tag }}
   serviceCIDR: "{{ .Values.submariner.serviceCidr }}"
+  serviceDiscoveryEnabled: {{ .Values.submariner.serviceDiscovery }}
