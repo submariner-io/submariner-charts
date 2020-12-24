@@ -29,33 +29,33 @@ spec:
       nodeSelector:
         submariner.io/gateway: 'true'
       containers:
-        - name: {{ template "submariner.fullname" . }}-globalnet
-          image: {{ .Values.globalnet.image.repository }}:{{  default .Chart.AppVersion .Values.globalnet.image.tag }}
-          imagePullPolicy: {{ .Values.globalnet.image.pullPolicy }}
-          env:
-            - name: SUBMARINER_CLUSTERID
-              value: '{{ .Values.submariner.clusterId }}'
-            - name: SUBMARINER_EXCLUDENS
-              value: 'submariner-operator,kube-system,operators,openshift-monitoring,openshift-dns'
-            - name: SUBMARINER_NAMESPACE
-              value: '{{ .Release.Namespace }}'
-            - name: NODE_NAME
-              valueFrom:
+      - name: {{ template "submariner.fullname" . }}-globalnet
+        image: {{ .Values.globalnet.image.repository }}:{{  default .Chart.AppVersion .Values.globalnet.image.tag }}
+        imagePullPolicy: {{ .Values.globalnet.image.pullPolicy }}
+        env:
+          - name: SUBMARINER_CLUSTERID
+            value: '{{ .Values.submariner.clusterId }}'
+          - name: SUBMARINER_EXCLUDENS
+            value: 'submariner-operator,kube-system,operators,openshift-monitoring,openshift-dns'
+          - name: SUBMARINER_NAMESPACE
+            value: '{{ .Release.Namespace }}'
+          - name: NODE_NAME
+            valueFrom:
               fieldRef:
                 fieldPath: "spec.nodeName"
-          securityContext:
-            allowPrivilegeEscalation: true
-            capabilities:
-              add:
-                - ALL
-            privileged: true
-            readOnlyRootFilesystem: false
-            runAsNonRoot: false
-          volumeMounts:
-            # Because we don't actually run iptables locally, but chroot in to the host
-            - mountPath: /host
-              name: host-slash
-              readOnly: true
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities:
+            add:
+              - ALL
+          privileged: true
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        volumeMounts:
+          # Because we don't actually run iptables locally, but chroot in to the host
+          - mountPath: /host
+            name: host-slash
+            readOnly: true
       volumes:
         - name: host-slash
           hostPath:
