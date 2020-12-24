@@ -39,6 +39,10 @@ spec:
               value: 'submariner-operator,kube-system,operators,openshift-monitoring,openshift-dns'
             - name: SUBMARINER_NAMESPACE
               value: '{{ .Release.Namespace }}'
+            - name: NODE_NAME
+              valueFrom:
+              fieldRef:
+                fieldPath: "spec.nodeName"
           securityContext:
             allowPrivilegeEscalation: true
             capabilities:
