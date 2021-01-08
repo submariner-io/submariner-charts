@@ -108,6 +108,10 @@ spec:
           value: "{{ .Values.leadership.renewDeadline }}"
         - name: LEADERSHIP_RETRYPERIOD
           value: "{{ .Values.leadership.retryPeriod }}"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: "spec.nodeName"
         image: {{ .Values.engine.image.repository }}:{{ default .Chart.AppVersion .Values.engine.image.tag }}
         imagePullPolicy: {{ .Values.engine.image.pullPolicy }}
         name: submariner
