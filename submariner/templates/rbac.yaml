@@ -111,6 +111,30 @@ subjects:
   namespace: {{ .Release.Namespace }}
 ---
 {{- end -}}
+{{- if ne .Values.submariner.globalCidr "" }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ template "submariner.fullname" . }}:engine
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ template "submariner.fullname" . }}:engine
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ template "submariner.fullname" . }}:engine
+subjects:
+- kind: ServiceAccount
+  name: {{ template "submariner.engineServiceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+---
+{{- end -}}
 {{- if .Values.submariner.serviceDiscovery }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
