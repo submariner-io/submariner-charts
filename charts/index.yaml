@@ -3,10 +3,10 @@ entries:
   submariner:
   - apiVersion: v1
     appVersion: 0.6.0
-    created: "2021-01-12T10:12:26.166147195Z"
+    created: "2021-01-14T09:34:10.567631177Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
-    digest: 08c1421c8746739def4266963ed562f4a1f00c67db8b7f6e3f7cd6438bc9e38d
+    digest: 218318f4be5fecb0816b386d94a159a60339afcf25573211c9532e036f44be98
     home: https://submariner-io.github.io/
     maintainers:
     - email: submariner-dev@googlegroups.com
@@ -19,7 +19,7 @@ entries:
     version: 0.7.0
   - apiVersion: v1
     appVersion: 0.6.0
-    created: "2021-01-12T10:12:26.165317785Z"
+    created: "2021-01-14T09:34:10.566707769Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: d54c4d598e68e11deb3683468887b0820637e9dd06379935d5ff3e187836cd91
@@ -35,7 +35,7 @@ entries:
     version: 0.6.0
   - apiVersion: v1
     appVersion: 0.4.0
-    created: "2021-01-12T10:12:26.164535275Z"
+    created: "2021-01-14T09:34:10.56578286Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: e2f11fd1d231b7b1f70274effb471d962bbe7a90383e1213954d3a54af1d4687
@@ -51,7 +51,7 @@ entries:
     version: 0.4.0
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2021-01-12T10:12:26.163792565Z"
+    created: "2021-01-14T09:34:10.564933452Z"
     description: k8s 1.16.x support
     digest: 6d814e86f82c5e1b7f6c9cd6ed7387b1defd1d56238dfcce654a9b1e2e8042cc
     home: https://submariner-io.github.io/
@@ -66,7 +66,7 @@ entries:
     version: 0.0.4
   - apiVersion: v1
     appVersion: v0.0.3
-    created: "2021-01-12T10:12:26.163061156Z"
+    created: "2021-01-14T09:34:10.564122644Z"
     description: k8s 1.16.x support
     digest: 09d528190319d326b65707a2cb87d7f2697e23ac851521f2e156150bc51970db
     home: https://submariner.io/
@@ -81,7 +81,7 @@ entries:
     version: 0.0.3
   - apiVersion: v1
     appVersion: v0.0.2
-    created: "2021-01-12T10:12:26.162006143Z"
+    created: "2021-01-14T09:34:10.563407138Z"
     description: Submariner with custom ipsec ports support
     digest: e7bdee6dd0b8d84a787e83c112efd948426a991a44529a77bfa36edba9606d8d
     home: https://submariner.io/
@@ -96,7 +96,7 @@ entries:
     version: 0.0.2
   - apiVersion: v1
     appVersion: v0.0.1
-    created: "2021-01-12T10:12:26.161239933Z"
+    created: "2021-01-14T09:34:10.562553329Z"
     description: Submariner
     digest: 3519f07bb8caa3b3dab5137e3fc7dec4862eb0f306d196d882c0f416033d89df
     home: https://submariner.io/
@@ -112,9 +112,9 @@ entries:
   submariner-k8s-broker:
   - apiVersion: v1
     appVersion: 0.6.0
-    created: "2021-01-12T10:12:26.167888818Z"
+    created: "2021-01-14T09:34:10.569556296Z"
     description: Submariner Kubernetes Broker
-    digest: 3a6cd94a09190e525d7458aef6ab29e7ba1f51955c16ca9e8a92991405b617c8
+    digest: 4d2c8b6601bed2e27b89d1308a282e5f00a8bc8e159ee219392135bc3b5865d4
     home: https://submariner-io.github.io/
     maintainers:
     - email: submariner-dev@googlegroups.com
@@ -127,7 +127,7 @@ entries:
     version: 0.7.0
   - apiVersion: v1
     appVersion: 0.6.0
-    created: "2021-01-12T10:12:26.167493213Z"
+    created: "2021-01-14T09:34:10.569095891Z"
     description: Submariner Kubernetes Broker
     digest: c18076c7bffa8d9f9ca306894c79975d7a7bb9aa91afc8f3d627b400a7adc768
     home: https://submariner-io.github.io/
@@ -142,7 +142,7 @@ entries:
     version: 0.6.0
   - apiVersion: v1
     appVersion: 0.4.1
-    created: "2021-01-12T10:12:26.167100008Z"
+    created: "2021-01-14T09:34:10.568666487Z"
     description: Submariner Kubernetes Broker
     digest: a3b99b87d9bd31b20c8faa35e43ea9df4dc369e8ccb05ac6edae93d2242cf8ba
     home: https://submariner-io.github.io/
@@ -157,7 +157,7 @@ entries:
     version: 0.4.1
   - apiVersion: v1
     appVersion: v0.0.2
-    created: "2021-01-12T10:12:26.166777903Z"
+    created: "2021-01-14T09:34:10.568300484Z"
     description: Submariner Kubernetes Broker
     digest: efc0faba08ed579c6729d02e8d2a5d9826f3bec4119258ae806b30b7625c4150
     home: https://submariner-io.github.io/
@@ -172,7 +172,7 @@ entries:
     version: 0.0.2
   - apiVersion: v1
     appVersion: v0.0.1
-    created: "2021-01-12T10:12:26.166461499Z"
+    created: "2021-01-14T09:34:10.567960981Z"
     description: Submariner Kubernetes Broker
     digest: a5961dd730ee2c593e86a45c566ce62846fdb1a60b235be4561246d80ec0051e
     home: https://submariner.io/
@@ -188,10 +188,10 @@ entries:
   submariner-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2021-01-12T10:12:26.168552226Z"
+    created: "2021-01-14T09:34:10.570333803Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
-    digest: cb454d27b4f32482d980bf0ebe747232087675fe1c4aa54181bea3ad253e6fa7
+    digest: e72998d9f1ecb54f702965e7ecb78e9dc449239c0c7169090d1ba40f6779c5ca
     home: https://submariner-io.github.io/
     maintainers:
     - email: submariner-dev@googlegroups.com
@@ -202,4 +202,4 @@ entries:
     urls:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-operator-0.7.0.tgz
     version: 0.7.0
-generated: "2021-01-12T10:12:26.159349809Z"
+generated: "2021-01-14T09:34:10.561356118Z"
