@@ -47,7 +47,7 @@ Create the name of the submariner-engine service account to use
 */}}
 {{- define "submariner.engineServiceAccountName" -}}
 {{- if .Values.serviceAccounts.engine.create -}}
-    {{ default (printf "%s-engine" (include "submariner.fullname" .)) .Values.serviceAccounts.engine.name }}
+    {{ default "submariner-engine" .Values.serviceAccounts.engine.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccounts.engine.name }}
 {{- end -}}
@@ -58,7 +58,7 @@ Create the name of the submariner-route-agent service account to use
 */}}
 {{- define "submariner.routeAgentServiceAccountName" -}}
 {{- if .Values.serviceAccounts.routeAgent.create -}}
-    {{ default (printf "%s-routeagent" (include "submariner.fullname" .)) .Values.serviceAccounts.routeAgent.name }}
+    {{ default "submariner-routeagent" .Values.serviceAccounts.routeAgent.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccounts.routeAgent.name }}
 {{- end -}}
@@ -69,20 +69,31 @@ Create the name of the submariner-globalnet service account to use
 */}}
 {{- define "submariner.globalnetServiceAccountName" -}}
 {{- if .Values.serviceAccounts.globalnet.create -}}
-    {{ default (printf "%s-globalnet" (include "submariner.fullname" .)) .Values.serviceAccounts.globalnet.name }}
+    {{ default "submariner-globalnet" .Values.serviceAccounts.globalnet.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccounts.globalnet.name }}
 {{- end -}}
 {{- end -}}
 
 {{/*
-Create the name of the submariner-lighthouse service account to use
+Create the name of the submariner-lighthouse-agent service account to use
 */}}
-{{- define "submariner.lighthouseServiceAccountName" -}}
-{{- if .Values.submariner.serviceDiscovery -}}
-    {{ default (printf "%s-lighthouse" (include "submariner.fullname" .)) .Values.serviceAccounts.lighthouse.name }}
+{{- define "submariner.lighthouseAgentServiceAccountName" -}}
+{{- if and (.Values.submariner.serviceDiscovery ) (.Values.serviceAccounts.lighthouseAgent.create) -}}
+    {{ default "submariner-lighthouse-agent" .Values.serviceAccounts.lighthouseAgent.name }}
 {{- else -}}
-    {{ default "default" .Values.serviceAccounts.lighthouse.name }}
+    {{ default "default" .Values.serviceAccounts.lighthouseAgent.name }}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Create the name of the submariner-lighthouse-coredns service account to use
+*/}}
+{{- define "submariner.lighthouseCoreDnsServiceAccountName" -}}
+{{- if and (.Values.submariner.serviceDiscovery ) (.Values.serviceAccounts.lighthouseCoreDns.create) -}}
+    {{ default "submariner-lighthouse-coredns" .Values.serviceAccounts.lighthouseCoreDns.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccounts.lighthouseCoreDns.name }}
 {{- end -}}
 {{- end -}}
 

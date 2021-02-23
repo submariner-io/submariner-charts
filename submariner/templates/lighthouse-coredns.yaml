@@ -30,7 +30,7 @@ spec:
             - mountPath: /etc/coredns
               name: config-volume
               readOnly: true
-      serviceAccountName: {{ template "submariner.lighthouseServiceAccountName" . }}
+      serviceAccountName: {{ template "submariner.lighthouseCoreDnsServiceAccountName" . }}
       volumes:
         - configMap:
             defaultMode: 420

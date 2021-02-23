@@ -46,14 +46,26 @@ metadata:
     app: {{ template "submariner.name" . }}
 {{- end }}
 ---
-{{- if .Values.serviceAccounts.lighthouse.create }}
+{{- if .Values.serviceAccounts.lighthouseAgent.create }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ template "submariner.lighthouseServiceAccountName" . }}
+  name: {{ template "submariner.lighthouseAgentServiceAccountName" . }}
   labels:
     heritage: {{ .Release.Service | quote }}
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
 {{- end }}
+---
+  {{- if .Values.serviceAccounts.lighthouseCoreDns.create }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ template "submariner.lighthouseCoreDnsServiceAccountName" . }}
+  labels:
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+    chart: {{ template "submariner.chart" . }}
+    app: {{ template "submariner.name" . }}
+  {{- end }}
