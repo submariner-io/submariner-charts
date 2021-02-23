@@ -19,7 +19,7 @@ spec:
       labels:
         app: {{ template "submariner.fullname" . }}-lighthouse-agent
     spec:
-      serviceAccountName: {{ template "submariner.lighthouseServiceAccountName" . }}
+      serviceAccountName: {{ template "submariner.lighthouseAgentServiceAccountName" . }}
       containers:
       - command:
         - lighthouse-agent.sh

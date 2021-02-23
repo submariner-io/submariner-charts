@@ -54,6 +54,9 @@ serviceAccounts:
   globalnet:
     create: true
     name: ""
-  lighthouse:
-    create: false
+  lighthouseAgent:
+    create: true
+    name: ""
+  lighthouseCoreDns:
+    create: true
     name: ""
