@@ -11,12 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      matrix:
+        globalnet: ['', 'globalnet']
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
 
       - name: Run E2E deployment and tests
         uses: submariner-io/shipyard/gh-actions/e2e@devel
+        with:
+          globalnet: ${{ matrix.globalnet }}
 
       - name: Post mortem
         if: failure()
