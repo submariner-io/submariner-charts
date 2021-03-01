@@ -22,7 +22,6 @@ e2e: E2E_ARGS=cluster1 cluster2
 preload-images:
 	source $(SCRIPTS_DIR)/lib/debug_functions; \
 	source $(SCRIPTS_DIR)/lib/deploy_funcs; \
-	source $(SCRIPTS_DIR)/lib/version; \
 	set -e; \
 	for image in submariner submariner-route-agent submariner-operator lighthouse-agent submariner-globalnet lighthouse-coredns; do \
 		import_image quay.io/submariner/$${image}; \
