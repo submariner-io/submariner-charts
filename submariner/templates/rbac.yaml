@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: {{ template "submariner.fullname" . }}:engine
+  name: {{ template "submariner.fullname" . }}:gateway
   labels:
     heritage: {{ .Release.Service | quote }}
     release: {{ .Release.Name | quote }}
@@ -82,7 +82,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ template "submariner.fullname" . }}:engine
+  name: {{ template "submariner.fullname" . }}:gateway
   labels:
     heritage: {{ .Release.Service | quote }}
     release: {{ .Release.Name | quote }}
@@ -91,10 +91,10 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: {{ template "submariner.fullname" . }}:engine
+  name: {{ template "submariner.fullname" . }}:gateway
 subjects:
   - kind: ServiceAccount
-    name: {{ template "submariner.engineServiceAccountName" . }}
+    name: {{ template "submariner.gatewayServiceAccountName" . }}
     namespace: {{ .Release.Namespace }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -299,7 +299,7 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ template "submariner.fullname" . }}:engine
+  name: {{ template "submariner.fullname" . }}:gateway
   labels:
     heritage: {{ .Release.Service | quote }}
     release: {{ .Release.Name | quote }}
@@ -366,7 +366,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ template "submariner.fullname" . }}:engine
+  name: {{ template "submariner.fullname" . }}:gateway
   labels:
     heritage: {{ .Release.Service | quote }}
     release: {{ .Release.Name | quote }}
@@ -375,10 +375,10 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ template "submariner.fullname" . }}:engine
+  name: {{ template "submariner.fullname" . }}:gateway
 subjects:
   - kind: ServiceAccount
-    name: {{ template "submariner.engineServiceAccountName" . }}
+    name: {{ template "submariner.gatewayServiceAccountName" . }}
     namespace: {{ .Release.Namespace }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1

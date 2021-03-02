@@ -29,9 +29,9 @@ leadership:
   leaseDuration: 10
   renewDeadline: 5
   retryPeriod: 2
-engine:
+gateway:
   image:
-    repository: quay.io/submariner/submariner
+    repository: quay.io/submariner/submariner-gateway
     tag: ""
     pullPolicy: IfNotPresent
   resources: {}
@@ -65,7 +65,7 @@ lighthouseCoredns:
     tag: ""
     pullPolicy: IfNotPresent
 serviceAccounts:
-  engine:
+  gateway:
     create: true
     name: ""
   routeAgent:

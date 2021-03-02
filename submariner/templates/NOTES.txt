@@ -1,6 +1,6 @@
 Submariner is now installed.
 
-{{- if .Values.engine.nodeSelectorEnabled }}
+{{- if .Values.gateway.nodeSelectorEnabled }}
 If you haven't done so yet, please label a node as `submariner.io/gateway=true` to elect it for running Submariner.
 {{- end }}
 

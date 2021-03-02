@@ -1,22 +1,22 @@
 questions:
-- variable: defaultEngineImage
+- variable: defaultGatewayImage
   default: true
-  description: "Use default Submariner Engine image or specify a custom one"
-  label: Use default submariner engine image
+  description: "Use default Submariner Gateway image or specify a custom one"
+  label: Use default submariner gateway image
   type: boolean
   show_subquestion_if: false
   group: "Container Images"
   subquestions:
-  - variable: engine.image.repository
-    default: "quay.io/submariner/submariner"
-    description: "Submariner Engine Image Repository"
+  - variable: gateway.image.repository
+    default: "quay.io/submariner/submariner-gateway"
+    description: "Submariner Gateway Image Repository"
     type: string
-    label: Submariner Engine Image Repository
-  - variable: engine.image.tag
+    label: Submariner Gateway Image Repository
+  - variable: gateway.image.tag
     default: "0.6.0"
-    description: "Submariner Engine Image Tag"
+    description: "Submariner Gateway Image Tag"
     type: string
-    label: Submariner Engine Image Tag
+    label: Submariner Gateway Image Tag
 - variable: defaultRouteAgentImage
   default: true
   description: "Use default Submariner Route Agent image or specify a custom one"
@@ -35,7 +35,7 @@ questions:
     description: "Submariner Route Agent Image Tag"
     type: string
     label: Submariner Route Agent Image Tag
-- variable: engine.nodeSelectorEnabled
+- variable: gateway.nodeSelectorEnabled
   default: true
   description: "Restrict submariner to nodes labeled with submariner.io/gateway=true"
   label: Restrict gateway deployments to specific nodes

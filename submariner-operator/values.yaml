@@ -37,15 +37,15 @@ operator:
   resources: {}
   tolerations: []
   affinity: {}
-engine:
+gateway:
   image:
-    repository: quay.io/submariner/submariner
+    repository: quay.io/submariner/submariner-gateway
     tag: "0.7.0"
 serviceAccounts:
   operator:
     create: true
     name: ""
-  engine:
+  gateway:
     create: true
     name: ""
   routeAgent:

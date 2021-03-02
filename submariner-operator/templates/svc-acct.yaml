@@ -10,11 +10,11 @@ metadata:
     app: {{ template "submariner.name" . }}
 {{- end }}
 ---
-{{- if .Values.serviceAccounts.engine.create }}
+{{- if .Values.serviceAccounts.gateway.create }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ template "submariner.engineServiceAccountName" . }}
+  name: {{ template "submariner.gatewayServiceAccountName" . }}
   labels:
     heritage: {{ .Release.Service | quote }}
     release: {{ .Release.Name | quote }}

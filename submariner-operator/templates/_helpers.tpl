@@ -43,13 +43,13 @@ Create the name of the submariner-operator service account to use
 {{- end -}}
 
 {{/*
-Create the name of the submariner-engine service account to use
+Create the name of the submariner-gateway service account to use
 */}}
-{{- define "submariner.engineServiceAccountName" -}}
-{{- if .Values.serviceAccounts.engine.create -}}
-    {{ default "submariner-engine" .Values.serviceAccounts.engine.name }}
+{{- define "submariner.gatewayServiceAccountName" -}}
+{{- if .Values.serviceAccounts.gateway.create -}}
+    {{ default "submariner-gateway" .Values.serviceAccounts.gateway.name }}
 {{- else -}}
-    {{ default "default" .Values.serviceAccounts.engine.name }}
+    {{ default "default" .Values.serviceAccounts.gateway.name }}
 {{- end -}}
 {{- end -}}
 
