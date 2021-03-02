@@ -6,7 +6,7 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.fullname" . }}
-    component: engine
+    component: gateway
   name: {{ template "submariner.fullname" . }}
 spec:
   progressDeadlineSeconds: 600
