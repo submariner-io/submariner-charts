@@ -24,3 +24,4 @@ spec:
   serviceCIDR: "{{ .Values.submariner.serviceCidr }}"
   globalCIDR: "{{ .Values.submariner.globalCidr }}"
   serviceDiscoveryEnabled: {{ .Values.submariner.serviceDiscovery }}
+  cableDriver: {{ .Values.submariner.cableDriver }}
