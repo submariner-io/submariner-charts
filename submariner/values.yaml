@@ -9,6 +9,7 @@ submariner:
   colorCodes: blue
   debug: false
   serviceDiscovery: false
+  cableDriver: "libreswan"
 crd:
   create: true
 broker:

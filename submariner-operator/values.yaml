@@ -9,6 +9,7 @@ submariner:
   colorCodes: blue
   debug: false
   serviceDiscovery: true
+  cableDriver: "libreswan"
   images:
     repository: quay.io/submariner
     tag: "0.7.0"
