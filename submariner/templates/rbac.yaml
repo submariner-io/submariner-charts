@@ -195,7 +195,7 @@ subjects:
     name: {{ template "submariner.routeAgentServiceAccountName" . }}
     namespace: {{ .Release.Namespace }}
 ---
-{{- if ne .Values.submariner.globalCidr "" }}
+{{- if .Values.broker.globalnet }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -463,7 +463,7 @@ subjects:
     name: {{ template "submariner.routeAgentServiceAccountName" . }}
     namespace: {{ .Release.Namespace }}
 ---
-{{- if ne .Values.submariner.globalCidr "" }}
+{{- if .Values.broker.globalnet }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:

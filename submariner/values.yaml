@@ -19,6 +19,7 @@ broker:
   namespace: xyz
   insecure: false
   ca: ""
+  globalnet: false
 rbac:
   create: true
 ipsec:
