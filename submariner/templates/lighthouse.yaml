@@ -30,7 +30,7 @@ spec:
           value: "{{ .Values.submariner.clusterId }}"
         - name: SUBMARINER_DEBUG
           value: "{{ .Values.submariner.debug }}"
-{{- if ne .Values.submariner.globalCidr "" }}
+{{- if .Values.broker.globalnet }}
         - name: SUBMARINER_GLOBALNET_ENABLED
           value: "true"
 {{- end }}

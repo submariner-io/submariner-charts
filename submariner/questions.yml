@@ -136,3 +136,9 @@ questions:
   group: "Advanced Configuration"
   description: "Cable driver implementation"
   label: "Cable Driver"
+- variable: submariner.serviceDiscovery
+  type: boolean
+  default: false
+  group: "Advanced Configuration"
+  description: "Enable multicluster service discovery"
+  label: "Service Discovery Enabled"
