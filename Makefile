@@ -5,6 +5,12 @@ ifneq (,$(DAPPER_HOST_ARCH))
 include $(SHIPYARD_DIR)/Makefile.inc
 
 CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings
+ifneq (,$(filter ovn,$(_using)))
+CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings.ovn
+else
+CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings
+endif
+
 override CLUSTERS_ARGS += $(CLUSTER_SETTINGS_FLAG)
 override DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG) --deploytool helm
 export DEPLOY_ARGS
