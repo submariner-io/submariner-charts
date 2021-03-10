@@ -2,6 +2,8 @@ ifneq (,$(DAPPER_HOST_ARCH))
 
 # Running in Dapper
 
+PRELOAD_IMAGES := submariner-gateway submariner-operator submariner-route-agent lighthouse-agent lighthouse-coredns
+
 include $(SHIPYARD_DIR)/Makefile.inc
 
 CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings
@@ -31,17 +33,7 @@ endif
 
 # Targets to make
 
-deploy: clusters preload-images
-
 e2e: E2E_ARGS=cluster1 cluster2
-
-preload-images:
-	source $(SCRIPTS_DIR)/lib/debug_functions; \
-	source $(SCRIPTS_DIR)/lib/deploy_funcs; \
-	set -e; \
-	for image in submariner-gateway submariner-route-agent submariner-operator lighthouse-agent submariner-globalnet lighthouse-coredns; do \
-		import_image quay.io/submariner/$${image}; \
-	done
 
 %.tgz:
 	helm dep update $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
@@ -56,7 +48,7 @@ release: submariner-$(CHARTS_VERSION).tgz submariner-k8s-broker-$(CHARTS_VERSION
 	  helm repo index $(CHARTS_DIR) --url $(GH_URL); \
 	fi
 
-.PHONY: preload-images release
+.PHONY: release
 
 else
 
