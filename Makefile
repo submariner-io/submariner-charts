@@ -8,13 +8,29 @@ ifneq (,$(DAPPER_HOST_ARCH))
 include $(SHIPYARD_DIR)/Makefile.inc
 
 CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings
+ifneq (,$(filter ovn,$(_using)))
+CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings.ovn
+else
+CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings
+endif
+
 override CLUSTERS_ARGS += $(CLUSTER_SETTINGS_FLAG)
-override DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG) --deploytool helm --deploytool_broker_args '--set submariner.serviceDiscovery=true'
+override DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG) --deploytool helm
 export DEPLOY_ARGS
 GH_URL=https://submariner-io.github.io/submariner-charts/charts
 CHARTS_DIR=charts
 CHARTS_VERSION=0.7.0
 REPO_URL=$(shell git config remote.origin.url)
+
+# Process extra flags from the `using=a,b,c` optional flag
+
+ifneq (,$(filter lighthouse,$(_using)))
+override DEPLOY_ARGS += --service_discovery
+endif
+
+ifneq (,$(filter globalnet,$(_using)))
+override DEPLOY_ARGS += --globalnet
+endif
 
 # Targets to make
 

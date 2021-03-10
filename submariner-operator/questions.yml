@@ -92,13 +92,26 @@ questions:
   label: "Service CIDR"
   group: "CIDR Configuration"
   required: true
-- variable: submariner.globalCidr
-  default: ""
-  description: "Enter the globalnet CIDR (i.e. 169.254.1.0/24) for this cluster if using globalnet"
-  type: string
-  label: "Globalnet CIDR"
-  group: "CIDR Configuration"
-  required: false
+- variable: submariner.serviceDiscovery
+  type: boolean
+  default: false
+  group: "Advanced Configuration"
+  description: "Enable multicluster service discovery"
+  label: "Service Discovery Enabled"
+- variable: broker.globalnet
+  type: boolean
+  default: false
+  group: "Broker Configuration"
+  description: "Enable support for overlapping Cluster/Service CIDRs in connecting clusters"
+  label: "Globalnet Enabled"
+  subquestions:
+  - variable: submariner.globalCidr
+    default: ""
+    description: "Enter the globalnet CIDR (i.e. 169.254.1.0/24) for this cluster if using globalnet"
+    type: string
+    label: "Globalnet CIDR"
+    group: "CIDR Configuration"
+    required: false
 - variable: submariner.natEnabled
   type: boolean
   default: false

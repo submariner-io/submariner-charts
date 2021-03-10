@@ -1,4 +1,4 @@
-{{- if ne .Values.submariner.globalCidr "" }}
+{{- if .Values.broker.globalnet }}
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:

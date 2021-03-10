@@ -7,5 +7,3 @@ serviceAccounts:
   client:
     create: true
     name: ""
-submariner:
-  serviceDiscovery: false
