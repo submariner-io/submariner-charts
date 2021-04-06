@@ -42,7 +42,7 @@ e2e: E2E_ARGS=cluster1 cluster2
 	helm dep update $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
 	helm package --version $(CHARTS_VERSION) $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
 
-release: submariner-$(CHARTS_VERSION).tgz submariner-k8s-broker-$(CHARTS_VERSION).tgz submariner-operator-$(CHARTS_VERSION).tgz
+release: submariner-k8s-broker-$(CHARTS_VERSION).tgz submariner-operator-$(CHARTS_VERSION).tgz
 	git checkout gh-pages
 	mv *.tgz $(CHARTS_DIR)
 	if [ -f $(CHARTS_DIR)/index.yaml ]; then \
