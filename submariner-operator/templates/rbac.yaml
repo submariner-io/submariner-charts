@@ -397,6 +397,7 @@ rules:
     resources:
       - configmaps
     verbs:
+      - create
       - get
       - list
       - watch
@@ -411,11 +412,13 @@ rules:
       - create
       - update
       - delete
-  - apiGroups:  # pods and services are looked up to figure out network settings
+      - watch
+  - apiGroups:  # pods, services and nodes are looked up to figure out network settings
       - ""
     resources:
       - pods
       - services
+      - nodes
     verbs:
       - get
       - list
