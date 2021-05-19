@@ -1,5 +1,12 @@
 # submariner-charts
 
+<!-- markdownlint-disable line-length -->
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4865/badge)](https://bestpractices.coreinfrastructure.org/projects/4865)
+[![Release Charts](https://github.com/submariner-io/submariner-charts/workflows/Release%20Charts/badge.svg)](https://github.com/submariner-io/submariner-charts/actions?query=workflow%3A%22Release+Charts%22)
+[![Periodic](https://github.com/submariner-io/submariner-charts/workflows/Periodic/badge.svg)](https://github.com/submariner-io/submariner-charts/actions?query=workflow%3APeriodic)
+[![Flake Finder](https://github.com/submariner-io/submariner-charts/workflows/Flake%20Finder/badge.svg)](https://github.com/submariner-io/submariner-charts/actions?query=workflow%3A%22Flake+Finder%22)
+<!-- markdownlint-enable line-length -->
+
 Please see the [Helm docs on Submariner's website](https://submariner.io/operations/deployment/helm/).
 
 ## Development workflow
