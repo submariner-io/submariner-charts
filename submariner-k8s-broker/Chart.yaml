@@ -1,6 +1,7 @@
 ---
 name: submariner-k8s-broker
 version: 0.6.0
+apiVersion: v2
 appVersion: 0.6.0
 description: Submariner Kubernetes Broker
 keywords:
