@@ -5,6 +5,29 @@ on:
   pull_request:
 
 jobs:
+  chart-testing:
+    name: Helm Chart Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.6.0
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Set up helm/chart-testing
+        uses: helm/chart-testing-action@v2.1.0
+
+      - name: Run helm/chart-testing (lint)
+        run: ct lint --config ct.yaml
+
   gitlint:
     name: Commit Message(s)
     runs-on: ubuntu-latest
