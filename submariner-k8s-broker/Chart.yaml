@@ -6,7 +6,8 @@ description: Submariner Kubernetes Broker
 keywords:
 home: https://submariner-io.github.io/
 sources:
-- https://submariner-io.github.io/submariner-charts/charts
+  - https://submariner-io.github.io/submariner-charts/charts
 maintainers:
-- name: Submariner Developers
-  email: submariner-dev@googlegroups.com
+  - name: Contributors to the Submariner project
+    email: submariner-dev@googlegroups.com
+    url: https://submariner.io/
