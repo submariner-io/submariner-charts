@@ -1,6 +1,7 @@
 ---
 name: submariner-operator
 version: 0.7.0
+apiVersion: v2
 appVersion: 0.7.0
 description: Submariner enables direct networking between Pods and Services in different Kubernetes clusters
 keywords:
