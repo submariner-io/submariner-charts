@@ -5,6 +5,9 @@
     },
     {
       "pattern": "^http://localhost:"
+    },
+    {
+      "pattern": "^https://submariner-io.github.io/submariner-charts/charts"
     }
   ]
 }
