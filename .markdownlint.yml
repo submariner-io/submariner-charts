@@ -10,3 +10,7 @@ line-length:
 no-inline-html:
   allowed_elements:
     - span
+
+# Temporary while helm-docs has a bug where maintainer URLs are used raw in MD
+# Waiting on: https://github.com/norwoodj/helm-docs/pull/102
+no-bare-urls: false
