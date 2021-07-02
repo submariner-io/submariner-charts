@@ -65,20 +65,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run helm-docs and verify docs are up-to-date
-        run: |
-          HELM_DOCS_VERSION="0.15.0"
-          # Avoid polluting repo with helm-docs' README/LICENSE or other files in the release archive
-          cd /tmp
-          curl -sL "https://github.com/norwoodj/helm-docs/releases/download/v${HELM_DOCS_VERSION}/helm-docs_${HELM_DOCS_VERSION}_Linux_x86_64.tar.gz" | tar zx
-          cd -
-          /tmp/helm-docs
-          if [[ ! -z "$(git status --porcelain)" ]]; then
-            echo "Helm docs not up-to-date:"
-            git status --porcelain
-            git diff
-            echo "Run helm-docs, as the CI does above, and commit the updated docs."
-            exit 1
-          fi
+        run: make helm-docs
 
   markdown-link-check:
     name: Markdown Links (modified files)
