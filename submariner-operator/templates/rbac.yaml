@@ -746,6 +746,7 @@ rules:
       - submariner.io
     resources:
       - "gateways"
+      - "globalingressips"
     verbs:
       - get
       - list
