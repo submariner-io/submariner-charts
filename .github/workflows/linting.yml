@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: Get PR commits
         id: 'get-pr-commits'
-        uses: tim-actions/get-pr-commits@v1.1.0
+        uses: tim-actions/get-pr-commits@55b867b9b28954e6f5c1a0fe2f729dc926c306d0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 'Verify no "Apply suggestions from code review" commits'
-        uses: tim-actions/commit-message-checker-with-regex@v0.3.1
+        uses: tim-actions/commit-message-checker-with-regex@d6d9770051dd6460679d1cab1dcaa8cffc5c2bbd
         with:
           commits: ${{ steps.get-pr-commits.outputs.commits }}
           pattern: '^(?!.*(apply suggestions from code review))'
@@ -28,20 +28,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
 
       - name: Set up Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@18bc76811624f360dbd7f18c2d4ecb32c7b87bab
         with:
           version: v3.6.0
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@dc73133d4da04e56a135ae2246682783cc7c7cb6
         with:
           python-version: '3.x'
 
       - name: Set up helm/chart-testing
-        uses: helm/chart-testing-action@v2.1.0
+        uses: helm/chart-testing-action@5f16c27cf7a4fa9c776ff73734df3909b2b65127
 
       - name: Run helm/chart-testing (lint)
         run: ct lint --config ct.yaml
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
         with:
           fetch-depth: 0
       - name: Run gitlint
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
 
       - name: Run helm-docs and verify docs are up-to-date
         run: make helm-docs
@@ -72,10 +72,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
 
       - name: Run markdown-link-check
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        uses: gaurav-nelson/github-action-markdown-link-check@9710f0fec812ce0a3b98bef4c9d842fc1f39d976
         with:
           config-file: ".markdownlinkcheck.json"
           check-modified-files-only: "yes"
@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
       - name: Run markdownlint
         run: make markdownlint
 
@@ -95,9 +95,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
       - name: Run yamllint
-        uses: ibiqlik/action-yamllint@v1
+        uses: ibiqlik/action-yamllint@665205c3255fcf157ef8dc9a40d527fe025a4bc8
         with:
           file_or_dir: submariner-k8s-broker/Chart.yaml submariner-k8s-broker/values.yaml submariner-operator/Chart.yaml submariner-operator/values.yaml
           config_file: .yamllint.yml
