@@ -101,3 +101,4 @@ jobs:
         with:
           file_or_dir: submariner-k8s-broker/Chart.yaml submariner-k8s-broker/values.yaml submariner-operator/Chart.yaml submariner-operator/values.yaml
           config_file: .yamllint.yml
+          strict: true
