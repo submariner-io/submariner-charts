@@ -80,7 +80,7 @@ Create the name of the submariner-lighthouse-agent service account to use
 */}}
 {{- define "submariner.lighthouseAgentServiceAccountName" -}}
 {{- if and (.Values.submariner.serviceDiscovery ) (.Values.serviceAccounts.lighthouseAgent.create) -}}
-    {{ default "submariner-lighthouse-agent" .Values.serviceAccounts.lighthouseAgent.name }}
+    {{ default "submariner-lighthouse" .Values.serviceAccounts.lighthouseAgent.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccounts.lighthouseAgent.name }}
 {{- end -}}

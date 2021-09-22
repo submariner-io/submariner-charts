@@ -1,6 +1,6 @@
 # submariner-operator
 
-![Version: 0.7.0](https://img.shields.io/badge/Version-0.7.0-informational?style=flat-square) ![AppVersion: 0.7.0](https://img.shields.io/badge/AppVersion-0.7.0-informational?style=flat-square)
+![Version: 0.10.1](https://img.shields.io/badge/Version-0.10.1-informational?style=flat-square) ![AppVersion: 0.10.1](https://img.shields.io/badge/AppVersion-0.10.1-informational?style=flat-square)
 
 Submariner enables direct networking between Pods and Services in different Kubernetes clusters
 
@@ -27,7 +27,7 @@ Submariner enables direct networking between Pods and Services in different Kube
 | broker.server | string | `"example.k8s.apiserver"` |  |
 | broker.token | string | `"test"` |  |
 | gateway.image.repository | string | `"quay.io/submariner/submariner-gateway"` |  |
-| gateway.image.tag | string | `"0.7.0"` |  |
+| gateway.image.tag | string | `"0.10.1"` |  |
 | ipsec.debug | bool | `false` |  |
 | ipsec.ikePort | int | `500` |  |
 | ipsec.natPort | int | `4500` |  |
@@ -38,7 +38,7 @@ Submariner enables direct networking between Pods and Services in different Kube
 | operator.affinity | object | `{}` |  |
 | operator.image.pullPolicy | string | `"IfNotPresent"` |  |
 | operator.image.repository | string | `"quay.io/submariner/submariner-operator"` |  |
-| operator.image.tag | string | `"0.7.0"` |  |
+| operator.image.tag | string | `"0.10.1"` |  |
 | operator.resources | object | `{}` |  |
 | operator.tolerations | list | `[]` |  |
 | rbac.create | bool | `true` |  |
@@ -61,7 +61,7 @@ Submariner enables direct networking between Pods and Services in different Kube
 | submariner.debug | bool | `false` |  |
 | submariner.globalCidr | string | `""` |  |
 | submariner.images.repository | string | `"quay.io/submariner"` |  |
-| submariner.images.tag | string | `"0.7.0"` |  |
+| submariner.images.tag | string | `"0.10.1"` |  |
 | submariner.natEnabled | bool | `false` |  |
 | submariner.serviceCidr | string | `""` |  |
 | submariner.serviceDiscovery | bool | `true` |  |

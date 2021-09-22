@@ -762,6 +762,15 @@ rules:
       - watch
       - update
       - delete
+  - apiGroups:
+    - lighthouse.submariner.io
+    resources:
+    - serviceexports
+    - serviceimports
+    verbs:
+    - list
+    - get
+    - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
