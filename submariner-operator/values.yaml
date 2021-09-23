@@ -10,6 +10,7 @@ submariner:
   debug: false
   serviceDiscovery: true
   cableDriver: "libreswan"
+  healthcheckEnabled: true
   images:
     repository: quay.io/submariner
     tag: "0.10.1"
