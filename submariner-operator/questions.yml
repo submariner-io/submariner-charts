@@ -136,3 +136,9 @@ questions:
   group: "Advanced Configuration"
   description: "Cable driver implementation"
   label: "Cable Driver"
+- variable: submariner.healthcheckEnabled
+  type: boolean
+  default: true
+  group: "Advanced Configuration"
+  description: "Disable Healtcheck, if your CNI does not expose a pod IP on the nodes"
+  label: "Healthcheck Disabled"
