@@ -29,6 +29,7 @@ Submariner enables direct networking between Pods and Services in different Kube
 | gateway.image.repository | string | `"quay.io/submariner/submariner-gateway"` |  |
 | gateway.image.tag | string | `"0.10.1"` |  |
 | ipsec.debug | bool | `false` |  |
+| ipsec.forceUDPEncaps | bool | `false` |  |
 | ipsec.ikePort | int | `500` |  |
 | ipsec.natPort | int | `4500` |  |
 | ipsec.psk | string | `""` |  |
@@ -58,8 +59,10 @@ Submariner enables direct networking between Pods and Services in different Kube
 | submariner.clusterCidr | string | `""` |  |
 | submariner.clusterId | string | `""` |  |
 | submariner.colorCodes | string | `"blue"` |  |
+| submariner.coreDNSCustomConfig | object | `{}` |  |
 | submariner.debug | bool | `false` |  |
 | submariner.globalCidr | string | `""` |  |
+| submariner.healthcheckEnabled | bool | `true` |  |
 | submariner.images.repository | string | `"quay.io/submariner"` |  |
 | submariner.images.tag | string | `"0.10.1"` |  |
 | submariner.natEnabled | bool | `false` |  |
