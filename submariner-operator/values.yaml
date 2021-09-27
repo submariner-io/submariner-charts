@@ -11,6 +11,7 @@ submariner:
   serviceDiscovery: true
   cableDriver: "libreswan"
   healthcheckEnabled: true
+  coreDNSCustomConfig: {}
   images:
     repository: quay.io/submariner
     tag: "0.10.1"
@@ -26,6 +27,7 @@ rbac:
 ipsec:
   psk: ""
   debug: false
+  forceUDPEncaps: false
   ikePort: 500
   natPort: 4500
 leadership:
