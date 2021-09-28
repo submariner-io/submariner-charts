@@ -140,5 +140,5 @@ questions:
   type: boolean
   default: true
   group: "Advanced Configuration"
-  description: "Disable Healtcheck, if your CNI does not expose a pod IP on the nodes"
+  description: "Disable Healthcheck"
   label: "Healthcheck Disabled"
