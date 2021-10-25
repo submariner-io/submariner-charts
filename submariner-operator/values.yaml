@@ -10,9 +10,11 @@ submariner:
   debug: false
   serviceDiscovery: true
   cableDriver: "libreswan"
+  healthcheckEnabled: true
+  coreDNSCustomConfig: {}
   images:
     repository: quay.io/submariner
-    tag: "0.7.0"
+    tag: "0.10.1"
 broker:
   server: example.k8s.apiserver
   token: test
@@ -25,6 +27,7 @@ rbac:
 ipsec:
   psk: ""
   debug: false
+  forceUDPEncaps: false
   ikePort: 500
   natPort: 4500
 leadership:
@@ -34,7 +37,7 @@ leadership:
 operator:
   image:
     repository: quay.io/submariner/submariner-operator
-    tag: "0.7.0"
+    tag: "0.10.1"
     pullPolicy: IfNotPresent
   resources: {}
   tolerations: []
@@ -42,7 +45,7 @@ operator:
 gateway:
   image:
     repository: quay.io/submariner/submariner-gateway
-    tag: "0.7.0"
+    tag: "0.10.1"
 serviceAccounts:
   operator:
     create: true

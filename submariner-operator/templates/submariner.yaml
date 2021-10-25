@@ -10,6 +10,7 @@ spec:
   brokerK8sCA: {{ .Values.broker.ca }}
   brokerK8sRemoteNamespace: {{ .Values.broker.namespace }}
   ceIPSecDebug: {{ .Values.ipsec.debug }}
+  ceIPSecForceUDPEncaps: {{ .Values.ipsec.forceUDPEncaps }}
   ceIPSecIKEPort: {{ .Values.ipsec.ikePort }}
   ceIPSecNATTPort: {{ .Values.ipsec.natPort }}
   ceIPSecPSK: {{ .Values.ipsec.psk }}
@@ -25,3 +26,9 @@ spec:
   globalCIDR: "{{ .Values.submariner.globalCidr }}"
   serviceDiscoveryEnabled: {{ .Values.submariner.serviceDiscovery }}
   cableDriver: {{ .Values.submariner.cableDriver }}
+  connectionHealthCheck: {{ .Values.submariner.healthcheckEnabled }}
+{{- with .Values.submariner.coreDNSCustomConfig }}
+  coreDNSCustomConfig:
+    configmapName: .configmapName
+    namespace: .namespace
+{{- end }}
