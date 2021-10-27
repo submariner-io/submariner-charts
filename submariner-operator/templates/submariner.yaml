@@ -26,7 +26,10 @@ spec:
   globalCIDR: "{{ .Values.submariner.globalCidr }}"
   serviceDiscoveryEnabled: {{ .Values.submariner.serviceDiscovery }}
   cableDriver: {{ .Values.submariner.cableDriver }}
-  connectionHealthCheck: {{ .Values.submariner.healthcheckEnabled }}
+  connectionHealthCheck:
+    enabled: {{ .Values.submariner.healthcheckEnabled }}
+    intervalSeconds: 1
+    maxPacketLossCount: 5
 {{- with .Values.submariner.coreDNSCustomConfig }}
   coreDNSCustomConfig:
     configmapName: .configmapName
