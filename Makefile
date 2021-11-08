@@ -9,11 +9,10 @@ PRELOAD_IMAGES := submariner-gateway submariner-operator submariner-route-agent 
 
 include $(SHIPYARD_DIR)/Makefile.inc
 
-CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings
 ifneq (,$(filter ovn,$(_using)))
-CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings.ovn
+CLUSTER_SETTINGS_FLAG = --settings $(DAPPER_SOURCE)/.shipyard.e2e.ovn.yml
 else
-CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/cluster_settings
+CLUSTER_SETTINGS_FLAG = --settings $(DAPPER_SOURCE)/.shipyard.e2e.yml
 endif
 
 override CLUSTERS_ARGS += $(CLUSTER_SETTINGS_FLAG)
