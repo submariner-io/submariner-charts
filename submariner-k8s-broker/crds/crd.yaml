@@ -1,97 +1,333 @@
-apiVersion: apiextensions.k8s.io/v1beta1
+apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: clusters.submariner.io
 spec:
   group: submariner.io
-  version: v1
   names:
     kind: Cluster
+    listKind: ClusterList
     plural: clusters
+    singular: cluster
   scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              cluster_cidr:
+                items:
+                  type: string
+                type: array
+              cluster_id:
+                type: string
+              color_codes:
+                items:
+                  type: string
+                type: array
+              global_cidr:
+                items:
+                  type: string
+                type: array
+              service_cidr:
+                items:
+                  type: string
+                type: array
+            required:
+            - cluster_cidr
+            - cluster_id
+            - color_codes
+            - global_cidr
+            - service_cidr
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
 ---
-apiVersion: apiextensions.k8s.io/v1beta1
+apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: endpoints.submariner.io
 spec:
   group: submariner.io
-  version: v1
   names:
     kind: Endpoint
+    listKind: EndpointList
     plural: endpoints
+    singular: endpoint
   scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              backend:
+                type: string
+              backend_config:
+                additionalProperties:
+                  type: string
+                type: object
+              cable_name:
+                type: string
+              cluster_id:
+                type: string
+              healthCheckIP:
+                type: string
+              hostname:
+                type: string
+              nat_enabled:
+                type: boolean
+              private_ip:
+                type: string
+              public_ip:
+                type: string
+              subnets:
+                items:
+                  type: string
+                type: array
+            required:
+            - backend
+            - cable_name
+            - cluster_id
+            - hostname
+            - nat_enabled
+            - private_ip
+            - public_ip
+            - subnets
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
 ---
-apiVersion: apiextensions.k8s.io/v1beta1
+apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: gateways.submariner.io
 spec:
   group: submariner.io
-  version: v1
   names:
     kind: Gateway
+    listKind: GatewayList
     plural: gateways
+    singular: gateway
   scope: Namespaced
-  additionalPrinterColumns:
-    - name: ha-status
+  versions:
+  - additionalPrinterColumns:
+    - description: High availability status of the Gateway
+      jsonPath: .status.haStatus
+      name: HA Status
       type: string
-      description: High Availability Status of the Gateway
-      JSONPath: .status.haStatus
----
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  name: multiclusterservices.lighthouse.submariner.io
-spec:
-  group: lighthouse.submariner.io
-  version: v1
-  names:
-    kind: MultiClusterService
-    plural: multiclusterservices
-    singular: multiclusterservice
-  scope: Namespaced
-  validation:
-    openAPIV3Schema:
-      properties:
-        spec:
-          properties:
-            clusterServiceInfo:
-              properties:
-                clusterID:
-                  type: "string"
-                clusterDomain:
-                  type: "string"
-                serviceIP:
-                  type: "string"
-                port:
-                  type: "integer"
----
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  name: serviceexports.lighthouse.submariner.io
-spec:
-  group: lighthouse.submariner.io
-  version: v2alpha1
-  names:
-    kind: ServiceExport
-    plural: serviceexports
-    singular: serviceexport
-  scope: Namespaced
----
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  name: serviceimports.lighthouse.submariner.io
-spec:
-  group: lighthouse.submariner.io
-  version: v2alpha1
-  names:
-    kind: ServiceImport
-    plural: serviceimports
-    singular: serviceimport
-  scope: Namespaced
+    name: v1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          status:
+            properties:
+              connections:
+                items:
+                  properties:
+                    endpoint:
+                      properties:
+                        backend:
+                          type: string
+                        backend_config:
+                          additionalProperties:
+                            type: string
+                          type: object
+                        cable_name:
+                          type: string
+                        cluster_id:
+                          type: string
+                        healthCheckIP:
+                          type: string
+                        hostname:
+                          type: string
+                        nat_enabled:
+                          type: boolean
+                        private_ip:
+                          type: string
+                        public_ip:
+                          type: string
+                        subnets:
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - backend
+                      - cable_name
+                      - cluster_id
+                      - hostname
+                      - nat_enabled
+                      - private_ip
+                      - public_ip
+                      - subnets
+                      type: object
+                    latency:
+                      description: LatencySpec describes the round trip time information
+                        in nanoseconds for a packet between the gateway pods of two
+                        clusters.
+                      properties:
+                        averageRTT:
+                          format: int64
+                          type: integer
+                        lastRTT:
+                          description: TODO This shall be deleted once the operator
+                            is using the latest. Using Optional to avoid validation
+                            errors when this field is not used.
+                          format: int64
+                          type: integer
+                        maxRTT:
+                          format: int64
+                          type: integer
+                        minRTT:
+                          format: int64
+                          type: integer
+                        stddevRTT:
+                          format: int64
+                          type: integer
+                      type: object
+                    latencyRTT:
+                      description: LatencySpec describes the round trip time information
+                        for a packet between the gateway pods of two clusters.
+                      properties:
+                        average:
+                          type: string
+                        last:
+                          type: string
+                        max:
+                          type: string
+                        min:
+                          type: string
+                        stdDev:
+                          type: string
+                      type: object
+                    status:
+                      type: string
+                    statusMessage:
+                      type: string
+                  required:
+                  - endpoint
+                  - status
+                  - statusMessage
+                  type: object
+                type: array
+              haStatus:
+                type: string
+              localEndpoint:
+                properties:
+                  backend:
+                    type: string
+                  backend_config:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  cable_name:
+                    type: string
+                  cluster_id:
+                    type: string
+                  healthCheckIP:
+                    type: string
+                  hostname:
+                    type: string
+                  nat_enabled:
+                    type: boolean
+                  private_ip:
+                    type: string
+                  public_ip:
+                    type: string
+                  subnets:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - backend
+                - cable_name
+                - cluster_id
+                - hostname
+                - nat_enabled
+                - private_ip
+                - public_ip
+                - subnets
+                type: object
+              statusFailure:
+                type: string
+              version:
+                type: string
+            required:
+            - connections
+            - haStatus
+            - localEndpoint
+            - statusFailure
+            - version
+            type: object
+        required:
+        - status
+        type: object
+    served: true
+    storage: true
+    subresources: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
