@@ -9,6 +9,7 @@ spec:
   brokerK8sApiServerToken: {{ .Values.broker.token }}
   brokerK8sCA: {{ .Values.broker.ca }}
   brokerK8sRemoteNamespace: {{ .Values.broker.namespace }}
+  brokerK8sInsecure: {{ .Values.broker.insecure }}
   ceIPSecDebug: {{ .Values.ipsec.debug }}
   ceIPSecForceUDPEncaps: {{ .Values.ipsec.forceUDPEncaps }}
   ceIPSecIKEPort: {{ .Values.ipsec.ikePort }}
