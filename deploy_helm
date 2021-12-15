@@ -61,7 +61,7 @@ function helm_install_subm() {
         --set serviceAccounts.globalnet.create="${globalnet}" \
         --set serviceAccounts.lighthouseAgent.create="${service_discovery}" \
         --set serviceAccounts.lighthouseCoreDns.create="${service_discovery}" \
-        --set submariner.natEnabled="false" \
+        --set submariner.natEnabled="true" \
         --set operator.image.repository="localhost:5000/submariner-operator" \
         --set operator.image.tag="local" \
         --set operator.image.pullPolicy="IfNotPresent" \

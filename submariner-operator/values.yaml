@@ -5,7 +5,7 @@ submariner:
   clusterCidr: ""
   serviceCidr: ""
   globalCidr: ""
-  natEnabled: false
+  natEnabled: true
   colorCodes: blue
   debug: false
   serviceDiscovery: true

@@ -114,9 +114,9 @@ questions:
     required: false
 - variable: submariner.natEnabled
   type: boolean
-  default: false
+  default: true
   group: "Advanced Configuration"
-  description: "If the gateway nodes for this cluster are behind 1:1 NAT, you should enable NAT"
+  description: "If the gateway nodes for this cluster are behind 1:1 NAT, like in a public cloud, you should enable NAT"
   label: "NAT Enabled"
 - variable: submariner.debug
   type: boolean
