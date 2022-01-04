@@ -678,7 +678,6 @@ rules:
       - ""
     resources:
       - pods
-      - services
       - namespaces
       - nodes
       - endpoints
@@ -687,6 +686,17 @@ rules:
       - list
       - watch
       - update
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - update
+      - delete
   - apiGroups:
       - submariner.io
     resources:
