@@ -33,6 +33,6 @@ spec:
     maxPacketLossCount: 5
 {{- with .Values.submariner.coreDNSCustomConfig }}
   coreDNSCustomConfig:
-    configmapName: {{ .Values.submariner.coreDNSCustomConfig.configmapName }}
-    namespace: {{ .Values.submariner.coreDNSCustomConfig.namespace }}
+    configmapName: {{ .configmapName }}
+    namespace: {{ .namespace }}
 {{- end }}
