@@ -13,7 +13,7 @@ questions:
     type: string
     label: Submariner Operator Image Repository
   - variable: operator.image.tag
-    default: "0.11.0"
+    default: "0.11.1"
     description: "Submariner Operator Image Tag"
     type: string
     label: Submariner Operator Image Tag
@@ -31,7 +31,7 @@ questions:
     type: string
     label: Submariner Repository
   - variable: submariner.images.tag
-    default: "0.11.0"
+    default: "0.11.1"
     description: "Submariner Images Tag (shared for all non-operator images)"
     type: string
     label: Submariner Images Tag
