@@ -1,15 +1,15 @@
 ---
 extends: default
+
 rules:
-  comments: disable
-  comments-indentation: disable
   line-length:
-    max: 150
-  braces:
-    min-spaces-inside: 0
-    max-spaces-inside: 0
-  brackets:
-    min-spaces-inside: 0
-    max-spaces-inside: 0
-  indentation:
-    indent-sequences: consistent
+    max: 140
+  # Allow standard GHA syntax for "on: *"
+  truthy:
+    ignore: '.github/workflows/*.yml'
+
+ignore: |
+  /submariner-k8s-broker/crds
+  /submariner-operator/crds
+  /submariner-k8s-broker/templates
+  /submariner-operator/templates
