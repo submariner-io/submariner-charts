@@ -1,3 +1,4 @@
+---
 charts:
   - submariner-operator
   - submariner-k8s-broker
