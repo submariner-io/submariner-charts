@@ -60,4 +60,4 @@ working correctly.
 [Helm]: https://helm.sh/docs/using_helm/#installing-helm
 [Docker]: https://docs.docker.com/install/
 [Podman]: https://podman.io/getting-started/installation
-[Create a fork]: https://help.github.com/en/articles/fork-a-repo
+[Create a fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
