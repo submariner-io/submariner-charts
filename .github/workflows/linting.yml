@@ -49,7 +49,7 @@ jobs:
           python-version: '3.x'
 
       - name: Set up helm/chart-testing
-        uses: helm/chart-testing-action@5f16c27cf7a4fa9c776ff73734df3909b2b65127
+        uses: helm/chart-testing-action@dae259e86a35ff09145c0805e2d7dd3f7207064a
 
       - name: Run helm/chart-testing (lint)
         run: ct lint --config ct.yaml
