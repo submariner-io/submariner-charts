@@ -44,7 +44,7 @@ jobs:
           version: v3.6.0
 
       - name: Set up Python
-        uses: actions/setup-python@dc73133d4da04e56a135ae2246682783cc7c7cb6
+        uses: actions/setup-python@98f2ad02fd48d057ee3b4d4f66525b231c3e52b6
         with:
           python-version: '3.x'
 
