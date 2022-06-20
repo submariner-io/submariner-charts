@@ -4,7 +4,7 @@ name: Release Charts
 on:
   push:
     branches:
-      - devel
+      - release-0.13
 
 jobs:
   release:
