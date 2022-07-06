@@ -8,4 +8,12 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner-k8s-broker.chart" . }}
     app: {{ template "submariner-k8s-broker.name" . }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "submariner-k8s-broker.clientServiceAccountName" . }}-token
+  annotations:
+    kubernetes.io/service-account.name: {{ template "submariner-k8s-broker.clientServiceAccountName" . }}
+type: kubernetes.io/service-account-token
 {{- end }}
