@@ -3,7 +3,7 @@ entries:
   submariner:
   - apiVersion: v1
     appVersion: 0.6.0
-    created: "2022-07-07T15:55:02.140637032Z"
+    created: "2022-07-07T16:07:51.488491888Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: 4585cb70dfd75880f0131fc40bc6f637c73d10e6a24ae43a2470e48d1447e0c4
@@ -19,7 +19,7 @@ entries:
     version: 0.7.0
   - apiVersion: v1
     appVersion: 0.6.0
-    created: "2022-07-07T15:55:02.139479717Z"
+    created: "2022-07-07T16:07:51.487725486Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: d54c4d598e68e11deb3683468887b0820637e9dd06379935d5ff3e187836cd91
@@ -35,7 +35,7 @@ entries:
     version: 0.6.0
   - apiVersion: v1
     appVersion: 0.4.0
-    created: "2022-07-07T15:55:02.138423403Z"
+    created: "2022-07-07T16:07:51.486951884Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: e2f11fd1d231b7b1f70274effb471d962bbe7a90383e1213954d3a54af1d4687
@@ -51,7 +51,7 @@ entries:
     version: 0.4.0
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2022-07-07T15:55:02.13749339Z"
+    created: "2022-07-07T16:07:51.486099282Z"
     description: k8s 1.16.x support
     digest: 6d814e86f82c5e1b7f6c9cd6ed7387b1defd1d56238dfcce654a9b1e2e8042cc
     home: https://submariner-io.github.io/
@@ -66,7 +66,7 @@ entries:
     version: 0.0.4
   - apiVersion: v1
     appVersion: v0.0.3
-    created: "2022-07-07T15:55:02.136782481Z"
+    created: "2022-07-07T16:07:51.485100679Z"
     description: k8s 1.16.x support
     digest: 09d528190319d326b65707a2cb87d7f2697e23ac851521f2e156150bc51970db
     home: https://submariner.io/
@@ -81,7 +81,7 @@ entries:
     version: 0.0.3
   - apiVersion: v1
     appVersion: v0.0.2
-    created: "2022-07-07T15:55:02.136197973Z"
+    created: "2022-07-07T16:07:51.484397378Z"
     description: Submariner with custom ipsec ports support
     digest: e7bdee6dd0b8d84a787e83c112efd948426a991a44529a77bfa36edba9606d8d
     home: https://submariner.io/
@@ -96,7 +96,7 @@ entries:
     version: 0.0.2
   - apiVersion: v1
     appVersion: v0.0.1
-    created: "2022-07-07T15:55:02.135630266Z"
+    created: "2022-07-07T16:07:51.482993974Z"
     description: Submariner
     digest: 3519f07bb8caa3b3dab5137e3fc7dec4862eb0f306d196d882c0f416033d89df
     home: https://submariner.io/
@@ -112,7 +112,7 @@ entries:
   submariner-k8s-broker:
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-07-07T15:55:02.144646385Z"
+    created: "2022-07-07T16:07:51.491713696Z"
     description: Submariner Kubernetes Broker
     digest: a689b7d0c0fb2bd199c65f163de061bb90fb112ec14ff3b76c889dfce587aaa3
     home: https://submariner-io.github.io/
@@ -128,7 +128,7 @@ entries:
     version: 0.11.2
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-07-07T15:55:02.144126978Z"
+    created: "2022-07-07T16:07:51.491326495Z"
     description: Submariner Kubernetes Broker
     digest: 8c21b5e044def3c1593621815ed211eefa990733327c03eefe0051ee0f7cb6e4
     home: https://submariner-io.github.io/
@@ -144,7 +144,7 @@ entries:
     version: 0.11.1
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-07-07T15:55:02.143388868Z"
+    created: "2022-07-07T16:07:51.490352593Z"
     description: Submariner Kubernetes Broker
     digest: 96e3a18402db4c4868f489587b3de2b6b9d16239f185df3054f4678f114e742b
     home: https://submariner-io.github.io/
@@ -160,9 +160,9 @@ entries:
     version: 0.11.0
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-07-07T15:55:02.142051051Z"
+    created: "2022-07-07T16:07:51.489829292Z"
     description: Submariner Kubernetes Broker
-    digest: f4a4be6aaec01bed02d766f0ce5d5051b32ee6bad8d663496ec3bae0d1c935ff
+    digest: 6e638ec3846b4bbbee84d9d8ba7e2e6c922c4dc9f5650af0427e44e2e117a5cc
     home: https://submariner-io.github.io/
     maintainers:
     - email: submariner-dev@googlegroups.com
@@ -176,7 +176,7 @@ entries:
     version: 0.10.1
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-07-07T15:55:02.146010803Z"
+    created: "2022-07-07T16:07:51.4931811Z"
     description: Submariner Kubernetes Broker
     digest: 63a38cb40f631654994e767c702c1b00d127a7b03feb57ece7d60ac1eeac0c64
     home: https://submariner-io.github.io/
@@ -192,7 +192,7 @@ entries:
     version: 0.7.0
   - apiVersion: v1
     appVersion: 0.6.0
-    created: "2022-07-07T15:55:02.145621398Z"
+    created: "2022-07-07T16:07:51.492641699Z"
     description: Submariner Kubernetes Broker
     digest: c18076c7bffa8d9f9ca306894c79975d7a7bb9aa91afc8f3d627b400a7adc768
     home: https://submariner-io.github.io/
@@ -207,7 +207,7 @@ entries:
     version: 0.6.0
   - apiVersion: v1
     appVersion: 0.4.1
-    created: "2022-07-07T15:55:02.145254493Z"
+    created: "2022-07-07T16:07:51.492177498Z"
     description: Submariner Kubernetes Broker
     digest: a3b99b87d9bd31b20c8faa35e43ea9df4dc369e8ccb05ac6edae93d2242cf8ba
     home: https://submariner-io.github.io/
@@ -222,7 +222,7 @@ entries:
     version: 0.4.1
   - apiVersion: v1
     appVersion: v0.0.2
-    created: "2022-07-07T15:55:02.141416542Z"
+    created: "2022-07-07T16:07:51.48923179Z"
     description: Submariner Kubernetes Broker
     digest: efc0faba08ed579c6729d02e8d2a5d9826f3bec4119258ae806b30b7625c4150
     home: https://submariner-io.github.io/
@@ -237,7 +237,7 @@ entries:
     version: 0.0.2
   - apiVersion: v1
     appVersion: v0.0.1
-    created: "2022-07-07T15:55:02.141026237Z"
+    created: "2022-07-07T16:07:51.488819289Z"
     description: Submariner Kubernetes Broker
     digest: a5961dd730ee2c593e86a45c566ce62846fdb1a60b235be4561246d80ec0051e
     home: https://submariner.io/
@@ -253,7 +253,7 @@ entries:
   submariner-operator:
   - apiVersion: v2
     appVersion: 0.11.2
-    created: "2022-07-07T15:55:02.149450749Z"
+    created: "2022-07-07T16:07:51.49708011Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: b87a451784561aea6c59ad091cd1c506a1ad17d158c7ddfb7afa5eb6d6916c77
@@ -270,7 +270,7 @@ entries:
     version: 0.11.2
   - apiVersion: v2
     appVersion: 0.11.1
-    created: "2022-07-07T15:55:02.148623238Z"
+    created: "2022-07-07T16:07:51.496318808Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: 68a10cea87424db5bee1b83487e38f35891c5853a10ad5cc8f181f9a886df6c3
@@ -287,7 +287,7 @@ entries:
     version: 0.11.1
   - apiVersion: v2
     appVersion: 0.11.0
-    created: "2022-07-07T15:55:02.147719926Z"
+    created: "2022-07-07T16:07:51.495553306Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: 0a8a734997fb8b62429c27b415ff31b51b07d63660b66b2861e768ad70cad88e
@@ -304,10 +304,10 @@ entries:
     version: 0.11.0
   - apiVersion: v2
     appVersion: 0.10.1
-    created: "2022-07-07T15:55:02.146770013Z"
+    created: "2022-07-07T16:07:51.494222903Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
-    digest: b8dbb28347c76be472081f38d56d2d88daaa26faa146b65063d8ed1e59119670
+    digest: d256bbc7de88a7f41ab7cb64831e6ef294b8f75cea0b3b497d8d881b09c8a4b0
     home: https://submariner-io.github.io/
     maintainers:
     - email: submariner-dev@googlegroups.com
@@ -321,7 +321,7 @@ entries:
     version: 0.10.1
   - apiVersion: v2
     appVersion: 0.7.0
-    created: "2022-07-07T15:55:02.150363861Z"
+    created: "2022-07-07T16:07:51.497857312Z"
     description: Submariner enables direct networking between Pods and Services in
       different Kubernetes clusters
     digest: 3213edc4cc0a7bbd5342e46f9671bb2baa56cef65507afe90a812b38da74a2db
@@ -336,4 +336,4 @@ entries:
     urls:
     - https://submariner-io.github.io/submariner-charts/charts/submariner-operator-0.7.0.tgz
     version: 0.7.0
-generated: "2022-07-07T15:55:02.134870756Z"
+generated: "2022-07-07T16:07:51.48138967Z"
