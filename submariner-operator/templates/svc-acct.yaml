@@ -8,6 +8,14 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "submariner.operatorServiceAccountName" . }}-token
+  annotations:
+    kubernetes.io/service-account.name: {{ template "submariner.operatorServiceAccountName" . }}
+type: kubernetes.io/service-account-token
 {{- end }}
 ---
 {{- if .Values.serviceAccounts.gateway.create }}
@@ -20,6 +28,14 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "submariner.gatewayServiceAccountName" . }}-token
+  annotations:
+    kubernetes.io/service-account.name: {{ template "submariner.gatewayServiceAccountName" . }}
+type: kubernetes.io/service-account-token
 {{- end }}
 ---
 {{- if .Values.serviceAccounts.routeAgent.create }}
@@ -32,6 +48,14 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "submariner.routeAgentServiceAccountName" . }}-token
+  annotations:
+    kubernetes.io/service-account.name: {{ template "submariner.routeAgentServiceAccountName" . }}
+type: kubernetes.io/service-account-token
 {{- end }}
 ---
 {{- if .Values.serviceAccounts.globalnet.create }}
@@ -44,6 +68,14 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "submariner.globalnetServiceAccountName" . }}-token
+  annotations:
+    kubernetes.io/service-account.name: {{ template "submariner.globalnetServiceAccountName" . }}
+type: kubernetes.io/service-account-token
 {{- end }}
 ---
 {{- if .Values.serviceAccounts.lighthouseAgent.create }}
@@ -56,6 +88,14 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "submariner.lighthouseAgentServiceAccountName" . }}-token
+  annotations:
+    kubernetes.io/service-account.name: {{ template "submariner.lighthouseAgentServiceAccountName" . }}
+type: kubernetes.io/service-account-token
 {{- end }}
 ---
   {{- if .Values.serviceAccounts.lighthouseCoreDns.create }}
@@ -68,4 +108,12 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "submariner.lighthouseCoreDnsServiceAccountName" . }}-token
+  annotations:
+    kubernetes.io/service-account.name: {{ template "submariner.lighthouseCoreDnsServiceAccountName" . }}
+type: kubernetes.io/service-account-token
   {{- end }}

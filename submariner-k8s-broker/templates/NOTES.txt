@@ -6,5 +6,5 @@ You can retrieve the server URL by running
 
 The broker client token and CA can be retrieved by running
 
-  $ SUBMARINER_BROKER_CA=$(kubectl -n {{ .Release.Namespace }} get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.io/service-account\.name']=='{{ template "submariner-k8s-broker.clientServiceAccountName" . }}')].data['ca\.crt']}")
-  $ SUBMARINER_BROKER_TOKEN=$(kubectl -n {{ .Release.Namespace }} get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.io/service-account\.name']=='{{ template "submariner-k8s-broker.clientServiceAccountName" . }}')].data.token}"|base64 --decode)
+  $ SUBMARINER_BROKER_CA=$(kubectl -n "${SUBMARINER_BROKER_NS}" get secrets "${SUBMARINER_BROKER_NS}-client-token" -o jsonpath="{.data['ca\.crt']}")
+  $ SUBMARINER_BROKER_TOKEN=$(kubectl -n "${SUBMARINER_BROKER_NS}" get secrets "${SUBMARINER_BROKER_NS}-client-token" -o jsonpath="{.data.token}"|base64 --decode)
