@@ -20,7 +20,7 @@ override DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG) --deploytool helm
 export DEPLOY_ARGS
 GH_URL=https://submariner-io.github.io/submariner-charts/charts
 CHARTS_DIR=charts
-CHARTS_VERSION=0.10.1
+CHARTS_VERSION=0.13.0-rc2
 HELM_DOCS_VERSION=0.15.0
 REPO_URL=$(shell git config remote.origin.url)
 
