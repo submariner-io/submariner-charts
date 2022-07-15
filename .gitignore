@@ -3,3 +3,4 @@
 .shflags
 *.tgz
 Makefile.dapper
+Dockerfile.*

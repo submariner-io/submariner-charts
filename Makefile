@@ -1,5 +1,6 @@
 BASE_BRANCH ?= devel
 export BASE_BRANCH
+export HELM_REPO_LOCATION=.
 
 ifneq (,$(DAPPER_HOST_ARCH))
 
