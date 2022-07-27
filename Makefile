@@ -11,29 +11,17 @@ PRELOAD_IMAGES := submariner-gateway submariner-operator submariner-route-agent 
 include $(SHIPYARD_DIR)/Makefile.inc
 
 ifneq (,$(filter ovn,$(_using)))
-CLUSTER_SETTINGS_FLAG = --settings $(DAPPER_SOURCE)/.shipyard.e2e.ovn.yml
+export SETTINGS = $(DAPPER_SOURCE)/.shipyard.e2e.ovn.yml
 else
-CLUSTER_SETTINGS_FLAG = --settings $(DAPPER_SOURCE)/.shipyard.e2e.yml
+export SETTINGS = $(DAPPER_SOURCE)/.shipyard.e2e.yml
 endif
 
-override CLUSTERS_ARGS += $(CLUSTER_SETTINGS_FLAG)
-override DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG) --deploytool helm
-export DEPLOY_ARGS
+export DEPLOYTOOL = helm
 GH_URL=https://submariner-io.github.io/submariner-charts/charts
 CHARTS_DIR=charts
 CHARTS_VERSION=0.13.0-rc2
 HELM_DOCS_VERSION=0.15.0
 REPO_URL=$(shell git config remote.origin.url)
-
-# Process extra flags from the `using=a,b,c` optional flag
-
-ifneq (,$(filter lighthouse,$(_using)))
-override DEPLOY_ARGS += --service_discovery
-endif
-
-ifneq (,$(filter globalnet,$(_using)))
-override DEPLOY_ARGS += --globalnet
-endif
 
 # Targets to make
 
