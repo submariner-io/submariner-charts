@@ -24,6 +24,7 @@ broker:
   globalnet: false
 rbac:
   create: true
+images: {}
 ipsec:
   psk: ""
   debug: false
