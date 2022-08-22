@@ -23,6 +23,32 @@ spec:
   natEnabled: {{ .Values.submariner.natEnabled }}
   repository: {{ .Values.submariner.images.repository }}
   version: {{ .Values.submariner.images.tag }}
+{{- with .Values.images }}
+{{- if . }}
+  imageOverrides:
+    {{- if index . "submariner-operator" }}
+    submariner-operator: {{ index . "submariner-operator" }}
+    {{- end }}
+    {{- if index . "submariner-gateway" }}
+    submariner-gateway: {{ index . "submariner-gateway" }}
+    {{- end }}
+    {{- if index . "submariner-route-agent" }}
+    submariner-routeagent: {{ index . "submariner-route-agent" }}
+    {{- end }}
+    {{- if index . "submariner-globalnet" }}
+    submariner-globalnet: {{ index . "submariner-globalnet" }}
+    {{- end }}
+    {{- if index . "submariner-networkplugin-syncer" }}
+    submariner-networkplugin-syncer: {{ index . "submariner-networkplugin-syncer" }}
+    {{- end }}
+    {{- if index . "lighthouse-agent" }}
+    lighthouse-agent: {{ index . "lighthouse-agent" }}
+    {{- end }}
+    {{- if index . "lighthouse-coredns" }}
+    lighthouse-coredns: {{ index . "lighthouse-coredns" }}
+    {{- end }}
+{{- end }}
+{{- end }}
   serviceCIDR: "{{ .Values.submariner.serviceCidr }}"
   globalCIDR: "{{ .Values.submariner.globalCidr }}"
   serviceDiscoveryEnabled: {{ .Values.submariner.serviceDiscovery }}
