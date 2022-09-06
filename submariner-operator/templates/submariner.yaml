@@ -42,10 +42,10 @@ spec:
     submariner-networkplugin-syncer: {{ index . "submariner-networkplugin-syncer" }}
     {{- end }}
     {{- if index . "lighthouse-agent" }}
-    lighthouse-agent: {{ index . "lighthouse-agent" }}
+    submariner-lighthouse-agent: {{ index . "lighthouse-agent" }}
     {{- end }}
     {{- if index . "lighthouse-coredns" }}
-    lighthouse-coredns: {{ index . "lighthouse-coredns" }}
+    submariner-lighthouse-coredns: {{ index . "lighthouse-coredns" }}
     {{- end }}
 {{- end }}
 {{- end }}
