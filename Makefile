@@ -6,8 +6,6 @@ ifneq (,$(DAPPER_HOST_ARCH))
 
 # Running in Dapper
 
-PRELOAD_IMAGES := submariner-gateway submariner-operator submariner-route-agent lighthouse-agent lighthouse-coredns
-
 include $(SHIPYARD_DIR)/Makefile.inc
 
 ifneq (,$(filter ovn,$(_using)))
