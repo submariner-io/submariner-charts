@@ -19,6 +19,7 @@ spec:
   clusterID: {{ .Values.submariner.clusterId }}
   colorCodes: {{ .Values.submariner.colorCodes }}
   debug: {{ .Values.submariner.debug }}
+  loadBalancerEnabled: {{ .Values.submariner.loadBalancerEnabled }}
   namespace: {{ .Release.Namespace }}
   natEnabled: {{ .Values.submariner.natEnabled }}
   repository: {{ .Values.submariner.images.repository }}
