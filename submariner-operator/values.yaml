@@ -15,7 +15,7 @@ submariner:
   coreDNSCustomConfig: {}
   images:
     repository: quay.io/submariner
-    tag: "0.13.0-rc2"
+    tag: "0.14.0-m1"
 broker:
   server: example.k8s.apiserver
   token: test
@@ -39,7 +39,7 @@ leadership:
 operator:
   image:
     repository: quay.io/submariner/submariner-operator
-    tag: "0.13.0-rc2"
+    tag: "0.14.0-m1"
     pullPolicy: IfNotPresent
   resources: {}
   tolerations: []
@@ -47,7 +47,7 @@ operator:
 gateway:
   image:
     repository: quay.io/submariner/submariner-gateway
-    tag: "0.13.0-rc2"
+    tag: "0.14.0-m1"
 serviceAccounts:
   operator:
     create: true

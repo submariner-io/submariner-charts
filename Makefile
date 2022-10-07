@@ -17,18 +17,9 @@ endif
 export DEPLOYTOOL = helm
 GH_URL=https://submariner-io.github.io/submariner-charts/charts
 CHARTS_DIR=charts
-CHARTS_VERSION=0.13.0-rc2
+CHARTS_VERSION=0.14.0-m1
 HELM_DOCS_VERSION=0.15.0
 REPO_URL=$(shell git config remote.origin.url)
-
-# TODO: Remove once a 0.14.0/0.13.1 helm chart is released
-# This is needed because the operator was erroneously using image names for overrides, and it has been fixed on devel
-# Also we need the fix https://github.com/submariner-io/lighthouse/pull/833
-ifeq ($(LIGHTHOUSE),true)
-ifeq ($(GLOBALNET),true)
-PRELOAD_IMAGES := lighthouse-agent lighthouse-coredns submariner-operator
-endif
-endif
 
 # Targets to make
 
