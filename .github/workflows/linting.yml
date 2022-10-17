@@ -105,7 +105,7 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
       - name: Run yamllint
-        uses: ibiqlik/action-yamllint@81e214fd484713882ce4237cb7cd264d550856cf
+        uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c
         with:
           file_or_dir: submariner-k8s-broker/Chart.yaml submariner-k8s-broker/values.yaml submariner-operator/Chart.yaml submariner-operator/values.yaml
           config_file: .yamllint.yml
