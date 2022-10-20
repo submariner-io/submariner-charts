@@ -20,6 +20,8 @@ CHARTS_DIR=charts
 CHARTS_VERSION=0.14.0-m1
 HELM_DOCS_VERSION=0.15.0
 REPO_URL=$(shell git config remote.origin.url)
+SUBCTL_VERSION=$(CHARTS_VERSION)
+export SUBCTL_VERSION
 
 # Targets to make
 
