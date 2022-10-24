@@ -44,10 +44,6 @@ operator:
   resources: {}
   tolerations: []
   affinity: {}
-gateway:
-  image:
-    repository: quay.io/submariner/submariner-gateway
-    tag: "0.14.0-m1"
 serviceAccounts:
   operator:
     create: true
