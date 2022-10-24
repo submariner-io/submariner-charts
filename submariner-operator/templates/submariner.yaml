@@ -23,7 +23,7 @@ spec:
   namespace: {{ .Release.Namespace }}
   natEnabled: {{ .Values.submariner.natEnabled }}
   repository: {{ .Values.submariner.images.repository }}
-  version: {{ .Values.submariner.images.tag }}
+  version: {{ default .Chart.AppVersion .Values.submariner.images.tag }}
 {{- with .Values.images }}
 {{- if . }}
   imageOverrides:
