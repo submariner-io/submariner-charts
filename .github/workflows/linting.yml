@@ -53,6 +53,9 @@ jobs:
       - name: Set up helm/chart-testing
         uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992
 
+      - name: Set up local helm repo
+        run: make local-helm-repo
+
       - name: Run helm/chart-testing (lint)
         run: ct lint --config ct.yaml
 

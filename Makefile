@@ -1,6 +1,6 @@
 BASE_BRANCH ?= release-0.14
 export BASE_BRANCH
-export HELM_REPO_LOCATION=.
+export HELM_REPO_LOCATION=./helm_repo
 
 ifneq (,$(DAPPER_HOST_ARCH))
 
@@ -25,11 +25,20 @@ export SUBCTL_VERSION
 
 # Targets to make
 
-e2e: E2E_ARGS=cluster1 cluster2
+CHART_PACKAGES := submariner-k8s-broker-$(CHARTS_VERSION).tgz submariner-operator-$(CHARTS_VERSION).tgz
+
+local-helm-repo: $(CHART_PACKAGES)
+	mkdir -p $(HELM_REPO_LOCATION)
+	for archive in $^; do \
+	  tar xzf $$archive -C $(HELM_REPO_LOCATION); \
+	done
+
+e2e: local-helm-repo
+	$(SCRIPTS_DIR)/e2e.sh
 
 %.tgz:
 	helm dep update $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
-	helm package --version $(CHARTS_VERSION) $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
+	helm package --version $(CHARTS_VERSION) --app-version $(CHARTS_VERSION) $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
 
 helm-docs:
 	# Avoid polluting repo with helm-docs' README/LICENSE or other files in the release archive
@@ -45,7 +54,7 @@ helm-docs:
 		exit 1; \
 	fi
 
-release: submariner-k8s-broker-$(CHARTS_VERSION).tgz submariner-operator-$(CHARTS_VERSION).tgz
+release: $(CHART_PACKAGES)
 	git checkout gh-pages
 	mv *.tgz $(CHARTS_DIR)
 	if [ -f $(CHARTS_DIR)/index.yaml ]; then \
