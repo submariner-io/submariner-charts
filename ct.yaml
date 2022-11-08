@@ -1,7 +1,7 @@
 ---
 charts:
-  - submariner-operator
-  - submariner-k8s-broker
+  - ./helm_repo/submariner-operator
+  - ./helm_repo/submariner-k8s-broker
 # Tests that maintainer name is valid GitHub account, which isn't what we want
 # See: https://github.com/helm/chart-testing/issues/192
 validate-maintainers: false
