@@ -1,8 +1,7 @@
 ---
 name: submariner-k8s-broker
-version: 0.14.0-m1
+version: 0.0.0
 apiVersion: v2
-appVersion: 0.14.0-m1
 description: Submariner Kubernetes Broker
 keywords:
 home: https://submariner-io.github.io/

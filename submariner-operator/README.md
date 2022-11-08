@@ -24,8 +24,6 @@ Submariner enables direct networking between Pods and Services in different Kube
 | broker.namespace | string | `"xyz"` |  |
 | broker.server | string | `"example.k8s.apiserver"` |  |
 | broker.token | string | `"test"` |  |
-| gateway.image.repository | string | `"quay.io/submariner/submariner-gateway"` |  |
-| gateway.image.tag | string | `"0.14.0"` |  |
 | ipsec.debug | bool | `false` |  |
 | ipsec.forceUDPEncaps | bool | `false` |  |
 | ipsec.ikePort | int | `500` |  |
