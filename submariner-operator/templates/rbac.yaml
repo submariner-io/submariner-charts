@@ -888,20 +888,10 @@ rules:
       - delete
       - deletecollection
   - apiGroups:
-      - lighthouse.submariner.io
-    resources:
-      - "*"
-    verbs:
-      - create
-      - get
-      - list
-      - watch
-      - update
-      - delete
-  - apiGroups:
       - submariner.io
     resources:
       - "gateways"
+      - "submariners"
     verbs:
       - get
       - list
