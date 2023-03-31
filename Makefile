@@ -1,4 +1,4 @@
-BASE_BRANCH ?= devel
+BASE_BRANCH ?= release-0.15
 export BASE_BRANCH
 export HELM_REPO_LOCATION=./helm_repo
 
