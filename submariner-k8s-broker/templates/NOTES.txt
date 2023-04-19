@@ -8,3 +8,4 @@ The broker client token and CA can be retrieved by running
 
   $ SUBMARINER_BROKER_CA=$(kubectl -n "${BROKER_NS}" get secrets "${BROKER_NS}-client-token" -o jsonpath="{.data['ca\.crt']}")
   $ SUBMARINER_BROKER_TOKEN=$(kubectl -n "${BROKER_NS}" get secrets "${BROKER_NS}-client-token" -o jsonpath="{.data.token}"|base64 --decode)
+
