@@ -699,7 +699,6 @@ rules:
       - pods
       - namespaces
       - nodes
-      - endpoints
     verbs:
       - get
       - list
@@ -709,6 +708,7 @@ rules:
       - ""
     resources:
       - services
+      - endpoints
     verbs:
       - create
       - get
@@ -729,17 +729,11 @@ rules:
       - submariner.io
     resources:
       - clusterglobalegressips
+      - clusterglobalegressips/status
       - globalegressips
-    verbs:
-      - create
-      - get
-      - list
-      - watch
-      - update
-  - apiGroups:
-      - submariner.io
-    resources:
+      - globalegressips/status
       - globalingressips
+      - globalingressips/status
     verbs:
       - create
       - get
