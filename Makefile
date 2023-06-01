@@ -17,11 +17,9 @@ endif
 export DEPLOYTOOL = helm
 GH_URL=https://submariner-io.github.io/submariner-charts/charts
 CHARTS_DIR=charts
-CHARTS_VERSION=0.15.0
+CHARTS_VERSION=0.16.0-m0
 HELM_DOCS_VERSION=0.15.0
 REPO_URL=$(shell git config remote.origin.url)
-SUBCTL_VERSION=$(CHARTS_VERSION)
-export SUBCTL_VERSION
 
 # Targets to make
 
