@@ -3,5 +3,6 @@
 .shflags
 *.tgz
 Makefile.dapper
+Makefile.shipyard
 Dockerfile.*
 helm_repo
