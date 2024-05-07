@@ -21,11 +21,12 @@ rules:
   - apiGroups:
       - ""
     resources:
-      # Temporarily needed for network-plugin syncer removal
-      - serviceaccounts
-    resourceNames:
-      - submariner-networkplugin-syncer
+      # For syncing Secrets from the broker
+      - secrets
     verbs:
+      - get
+      - create
+      - update
       - delete
   - apiGroups:
       - apps
@@ -140,6 +141,15 @@ rules:
       - create
       - update
       - delete
+  - apiGroups:
+      - ""
+    resources:
+      # For leader election
+      - configmaps
+    verbs:
+      - get
+      - create
+      - update
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -177,18 +187,6 @@ rules:
       - get
       - list
       - watch
-  - apiGroups:
-      - submariner.io
-    resources:
-      - gatewayroutes
-      - nongatewayroutes
-    verbs:
-      - get
-      - list
-      - watch
-      - create
-      - update
-      - delete
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -218,7 +216,6 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
-rules:
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -249,9 +246,6 @@ metadata:
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
 rules:
-  # submariner-operator updates the config map of core-dns to forward requests to
-  # clusterset.local to Lighthouse DNS, also looks at existing configmaps
-  # to figure out network settings
   - apiGroups:
       - ""
     resources:
@@ -315,17 +309,6 @@ rules:
       - daemonsets
     verbs:
       - list
-  - apiGroups:
-      - rbac.authorization.k8s.io
-    resources:
-      # Temporarily needed for network-plugin syncer removal
-      - clusterroles
-      - clusterrolebindings
-    resourceNames:
-      - ocp-submariner-networkplugin-syncer
-      - submariner-networkplugin-syncer
-    verbs:
-      - delete
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -428,9 +411,7 @@ rules:
     resources:
       - pods
       - services
-      - secrets
       - configmaps
-      - endpoints
     verbs:
       - get
       - list
@@ -450,16 +431,7 @@ rules:
       - get
       - list
       - watch
-  - apiGroups:
-      - projectcalico.org
-    resources:
-      - ippools
-    verbs:
-      - get
-      - create
-      - delete
       - update
-      - deletecollection
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
