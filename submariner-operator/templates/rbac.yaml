@@ -90,6 +90,13 @@ rules:
       - get
       - list
       - watch
+  - apiGroups:
+      - submariner.io
+    resources:
+      - submariners/finalizers
+      - servicediscoveries/finalizers
+    verbs:
+      - update
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
