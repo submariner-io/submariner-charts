@@ -227,6 +227,15 @@ metadata:
     app: {{ template "submariner.name" . }}
 rules:
   - apiGroups:
+      - submariner.io
+    resources:
+      - gateways
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+  - apiGroups:
       - coordination.k8s.io
     resources:
       - leases
@@ -508,15 +517,6 @@ metadata:
     chart: {{ template "submariner.chart" . }}
     app: {{ template "submariner.name" . }}
 rules:
-  - apiGroups:
-      - ""
-    resources:
-      - nodes
-    verbs:
-      - get
-      - list
-      - watch
-      - update
   - apiGroups:
       - ""
     resources:
