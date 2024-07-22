@@ -50,7 +50,7 @@ updates:
     target-branch: "release-0.18"
     schedule:
       interval: monthly
-    groups: 
+    groups:
       github-actions:
         patterns:
           - "*"
