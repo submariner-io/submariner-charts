@@ -52,6 +52,8 @@ spec:
 {{- end }}
   serviceCIDR: "{{ .Values.submariner.serviceCidr }}"
   globalCIDR: "{{ .Values.submariner.globalCidr }}"
+  clustersetIPCIDR: "{{ .Values.submariner.clustersetIpCidr }}"
+  clustersetIPEnabled: {{ .Values.submariner.clustersetIpEnabled }}
   serviceDiscoveryEnabled: {{ .Values.submariner.serviceDiscovery }}
   cableDriver: {{ .Values.submariner.cableDriver }}
   connectionHealthCheck:
