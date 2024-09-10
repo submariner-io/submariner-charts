@@ -58,6 +58,8 @@ Submariner enables direct networking between Pods and Services in different Kube
 | submariner.coreDNSCustomConfig | object | `{}` |  |
 | submariner.debug | bool | `false` |  |
 | submariner.globalCidr | string | `""` |  |
+| submariner.clustersetIpCidr | string | `""` |  |
+| submariner.clustersetIpEnabled | bool | `false` |  |
 | submariner.healthcheckEnabled | bool | `true` |  |
 | submariner.images.repository | string | `"quay.io/submariner"` |  |
 | submariner.images.tag | string | `"0.14.0"` |  |

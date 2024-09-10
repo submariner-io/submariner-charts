@@ -5,6 +5,8 @@ submariner:
   clusterCidr: ""
   serviceCidr: ""
   globalCidr: ""
+  clustersetIpCidr: ""
+  clustersetIpEnabled: false
   loadBalancerEnabled: false
   natEnabled: false
   colorCodes: blue
