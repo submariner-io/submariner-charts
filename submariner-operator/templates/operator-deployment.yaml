@@ -27,8 +27,8 @@ spec:
         name: {{ template "submariner.fullname" . }}
     spec:
       containers:
-      - command:
-        - submariner-operator
+      - args:
+        - --leader-elect
         env:
         - name: WATCH_NAMESPACE
           valueFrom:
