@@ -6,3 +6,8 @@ Makefile.dapper
 Makefile.shipyard
 Dockerfile.*
 helm_repo
+yamls
+submariner-k8s-broker/crds/crd.yaml
+submariner-k8s-broker/templates/_role.tpl
+submariner-operator/crds/crd.yaml
+submariner-operator/templates/*-rbac.yaml

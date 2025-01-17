@@ -4,7 +4,10 @@
 /= `/ {
     outfile = gensub("_yaml$", ".yaml", "1", $1)
     print "Writing " outfile
-    print substr($0, index($0, "`") + 1) > outfile
+    firstline = substr($0, index($0, "`") + 1)
+    if (firstline !~ "^---")
+        firstline = "---\n"firstline
+    print firstline > outfile
     next
 }
 
