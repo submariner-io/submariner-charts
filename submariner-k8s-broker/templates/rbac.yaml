@@ -1,26 +1,5 @@
 {{- if .Values.rbac.create -}}
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: {{ template "submariner-k8s-broker.fullname" . }}-cluster
-  labels:
-    heritage: {{ .Release.Service | quote }}
-    release: {{ .Release.Name | quote }}
-    chart: {{ template "submariner-k8s-broker.chart" . }}
-    app: {{ template "submariner-k8s-broker.name" . }}
-rules:
-- apiGroups: ["submariner.io"]
-  resources: ["clusters", "endpoints"]
-  verbs: ["create", "get", "list", "watch", "patch", "update", "delete"]
-- apiGroups: ["lighthouse.submariner.io"]
-  resources: ["*"]
-  verbs: ["create", "get", "list", "watch", "patch", "update", "delete"]
-- apiGroups: ["discovery.k8s.io"]
-  resources: ["endpointslices", "endpointslices/restricted"]
-  verbs: ["create", "get", "list", "watch","patch", "update", "delete"]
-- apiGroups: ["multicluster.x-k8s.io"]
-  resources: ["*"]
-  verbs: ["create", "get", "list", "watch", "update", "delete"]
+{{ include "broker-role" $ }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding

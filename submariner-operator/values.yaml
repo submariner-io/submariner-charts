@@ -46,22 +46,3 @@ operator:
   resources: {}
   tolerations: []
   affinity: {}
-serviceAccounts:
-  operator:
-    create: true
-    name: ""
-  gateway:
-    create: true
-    name: ""
-  routeAgent:
-    create: true
-    name: ""
-  globalnet:
-    create: true
-    name: ""
-  lighthouseAgent:
-    create: true
-    name: ""
-  lighthouseCoreDns:
-    create: true
-    name: ""

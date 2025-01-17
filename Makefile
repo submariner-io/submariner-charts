@@ -34,7 +34,10 @@ local-helm-repo: $(CHART_PACKAGES)
 e2e: local-helm-repo
 	$(SCRIPTS_DIR)/e2e.sh
 
-%.tgz:
+generate-yamls:
+	./generate-yamls.sh $(BASE_BRANCH)
+
+%.tgz: generate-yamls
 	helm dep update $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
 	helm package --version $(CHARTS_VERSION) --app-version $(CHARTS_VERSION) $(subst -$(CHARTS_VERSION),,$(basename $(@F)))
 
