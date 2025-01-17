@@ -1,0 +1,18 @@
+#!/usr/bin/awk -f
+
+# Start of a file entry
+/= `/ {
+    outfile = gensub("_yaml$", ".yaml", "1", $1)
+    print "Writing " outfile
+    print substr($0, index($0, "`") + 1) > outfile
+    next
+}
+
+/^`$/ {
+    outfile = ""
+    next
+}
+
+outfile != "" {
+    print >> outfile
+}
