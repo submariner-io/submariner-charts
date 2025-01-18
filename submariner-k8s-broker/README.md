@@ -13,12 +13,3 @@ Submariner Kubernetes Broker
 ## Source Code
 
 * <https://submariner-io.github.io/submariner-charts/charts>
-
-## Values
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| crd.create | bool | `true` |  |
-| rbac.create | bool | `true` |  |
-| serviceAccounts.client.create | bool | `true` |  |
-| serviceAccounts.client.name | string | `""` |  |

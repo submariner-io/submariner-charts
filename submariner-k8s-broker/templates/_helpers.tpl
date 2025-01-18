@@ -35,9 +35,5 @@ Create chart name and version as used by the chart label.
 Create the name of the submariner-client service account to use
 */}}
 {{- define "submariner-k8s-broker.clientServiceAccountName" -}}
-{{- if .Values.serviceAccounts.client.create -}}
-    {{ default (printf "%s-client" (include "submariner-k8s-broker.fullname" .)) .Values.serviceAccounts.client.name }}
-{{- else -}}
-    {{ default "default" .Values.serviceAccounts.client.name }}
-{{- end -}}
+{{- printf "%s-client" (include "submariner-k8s-broker.fullname" .)}}
 {{- end -}}

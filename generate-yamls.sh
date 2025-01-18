@@ -40,37 +40,30 @@ cat yamls/Deploy_crds_submariner_io_submariners.yaml \
     yamls/Deploy_crds_submariner_io_brokers.yaml > submariner-operator/crds/crd.yaml
 
 # Generate the operator RBAC yaml for the operator chart
-echo '{{- if .Values.rbac.create -}}' > ${OPERATOR_RBAC_YAML}
 add_service_acct_ns yamls/Config_rbac_submariner_operator_cluster_role_binding.yaml
 cat yamls/Config_rbac_submariner_operator_service_account.yaml \
     yamls/Config_rbac_submariner_operator_role.yaml \
     yamls/Config_rbac_submariner_operator_role_binding.yaml \
     yamls/Config_rbac_submariner_operator_cluster_role.yaml \
     yamls/Config_rbac_submariner_operator_cluster_role_binding.yaml > ${OPERATOR_RBAC_YAML}
-echo '{{- end -}}' >> ${OPERATOR_RBAC_YAML}
 
 # Generate the gateway RBAC yaml for the operator chart
-echo '{{- if .Values.rbac.create -}}' > ${GATEWAY_RBAC_YAML}
 add_service_acct_ns yamls/Config_rbac_submariner_gateway_cluster_role_binding.yaml
 cat yamls/Config_rbac_submariner_gateway_service_account.yaml \
     yamls/Config_rbac_submariner_gateway_role.yaml \
     yamls/Config_rbac_submariner_gateway_role_binding.yaml \
     yamls/Config_rbac_submariner_gateway_cluster_role.yaml \
     yamls/Config_rbac_submariner_gateway_cluster_role_binding.yaml > ${GATEWAY_RBAC_YAML}
-echo '{{- end -}}' >> ${GATEWAY_RBAC_YAML}
 
 # Generate the routeagent RBAC yaml for the operator chart
-echo '{{- if .Values.rbac.create -}}' > ${ROUTE_AGENT_RBAC_YAML}
 add_service_acct_ns yamls/Config_rbac_submariner_route_agent_cluster_role_binding.yaml
 cat yamls/Config_rbac_submariner_route_agent_service_account.yaml \
     yamls/Config_rbac_submariner_route_agent_role.yaml \
     yamls/Config_rbac_submariner_route_agent_role_binding.yaml \
     yamls/Config_rbac_submariner_route_agent_cluster_role.yaml \
     yamls/Config_rbac_submariner_route_agent_cluster_role_binding.yaml > ${ROUTE_AGENT_RBAC_YAML}
-echo '{{- end -}}' >> ${ROUTE_AGENT_RBAC_YAML}
 
 # Generate the globalnet RBAC yaml for the operator chart
-echo '{{- if .Values.rbac.create -}}' > ${GLOBALNET_RBAC_YAML}
 echo '{{- if .Values.broker.globalnet }}' > ${GLOBALNET_RBAC_YAML}
 add_service_acct_ns yamls/Config_rbac_submariner_globalnet_cluster_role_binding.yaml
 cat yamls/Config_rbac_submariner_globalnet_service_account.yaml \
@@ -81,7 +74,6 @@ cat yamls/Config_rbac_submariner_globalnet_service_account.yaml \
 echo '{{- end -}}' >> ${GLOBALNET_RBAC_YAML}
 
 # Generate the service discovery RBAC yaml for the operator chart
-echo '{{- if .Values.rbac.create -}}' > ${SERVICE_DISC_RBAC_YAML}
 echo '{{- if .Values.submariner.serviceDiscovery }}' > ${SERVICE_DISC_RBAC_YAML}
 add_service_acct_ns yamls/Config_rbac_lighthouse_agent_cluster_role_binding.yaml
 add_service_acct_ns yamls/Config_rbac_lighthouse_coredns_cluster_role_binding.yaml
@@ -94,7 +86,5 @@ cat yamls/Config_rbac_lighthouse_agent_service_account.yaml \
 echo '{{- end -}}' >> ${SERVICE_DISC_RBAC_YAML}
 
 # Generate the openshift monitoring rbac yaml for the operator chart
-echo '{{- if .Values.rbac.create -}}' > ${OPENSHIFT_MONITORING_YAML}
 cat yamls/Config_openshift_rbac_submariner_metrics_reader_role.yaml \
-    yamls/Config_openshift_rbac_submariner_metrics_reader_role_binding.yaml >> ${OPENSHIFT_MONITORING_YAML}
-echo '{{- end -}}' >> ${OPENSHIFT_MONITORING_YAML}
+    yamls/Config_openshift_rbac_submariner_metrics_reader_role_binding.yaml > ${OPENSHIFT_MONITORING_YAML}

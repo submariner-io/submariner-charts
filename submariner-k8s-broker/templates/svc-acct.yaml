@@ -1,4 +1,3 @@
-{{- if .Values.serviceAccounts.client.create }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -16,4 +15,3 @@ metadata:
   annotations:
     kubernetes.io/service-account.name: {{ template "submariner-k8s-broker.clientServiceAccountName" . }}
 type: kubernetes.io/service-account-token
-{{- end }}
