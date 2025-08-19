@@ -10,81 +10,94 @@ GLOBALNET_RBAC_YAML=submariner-operator/templates/globalnet-rbac.yaml
 SERVICE_DISC_RBAC_YAML=submariner-operator/templates/service-discovery-rbac.yaml
 OPENSHIFT_MONITORING_YAML=submariner-operator/templates/openshift-monitoring-rbac.yaml
 
+YAMLS_BASE=yamls/vendor
+SUBM_CRDS=${YAMLS_BASE}/github.com/submariner-io/submariner/deploy/crds
+OPERATOR_CRDS=${YAMLS_BASE}/github.com/submariner-io/submariner-operator/deploy/crds
+MCS_CRDS=${YAMLS_BASE}/sigs.k8s.io/mcs-api/config/crd
+BROKER=${YAMLS_BASE}/github.com/submariner-io/submariner-operator/config/broker/broker-client
+RBAC_BASE=${YAMLS_BASE}/github.com/submariner-io/submariner-operator/config/rbac
+OPENSHIFT=${YAMLS_BASE}/github.com/submariner-io/submariner-operator/config/openshift
+
 function add_service_acct_ns() {
     sed -i '/- kind: ServiceAccount/a \ \ \ \ namespace: {{ .Release.Namespace }}' $1
 }
 
-mkdir -p yamls
 cd yamls
-curl -L https://raw.githubusercontent.com/submariner-io/submariner-operator/refs/heads/$1/pkg/embeddedyamls/yamls.go | ../extract-yamls
-cd -
+rm go.mod || true
+go mod init
+go get github.com/submariner-io/submariner-operator@$1
+go mod tidy
+go mod vendor
+cd ..
 
 # Generate the CRDs for the broker chart
 mkdir -p submariner-k8s-broker/crds
-cat yamls/Deploy_submariner_crds_submariner_io_endpoints.yaml \
-	  yamls/Deploy_submariner_crds_submariner_io_clusters.yaml \
-		yamls/Deploy_submariner_crds_submariner_io_gateways.yaml \
-		yamls/Deploy_mcsapi_crds_multicluster_x_k8s_io_serviceexports.yaml \
-		yamls/Deploy_mcsapi_crds_multicluster_x_k8s_io_serviceimports.yaml > submariner-k8s-broker/crds/crd.yaml
+cat ${SUBM_CRDS}/submariner.io_endpoints.yaml \
+	  ${SUBM_CRDS}/submariner.io_clusters.yaml \
+		${SUBM_CRDS}/submariner.io_gateways.yaml > submariner-k8s-broker/crds/crd.yaml
+echo '---' >> submariner-k8s-broker/crds/crd.yaml
+cat ${MCS_CRDS}/multicluster.x-k8s.io_serviceexports.yaml >> submariner-k8s-broker/crds/crd.yaml
+echo '---' >> submariner-k8s-broker/crds/crd.yaml
+cat ${MCS_CRDS}/multicluster.x-k8s.io_serviceimports.yaml >> submariner-k8s-broker/crds/crd.yaml
 
 # Generate the client role yaml for the broker chart
 echo '{{- define "broker-role" -}}' > ${BROKER_ROLE_TPL}
-cat yamls/Config_broker_broker_client_role.yaml >> ${BROKER_ROLE_TPL}
+cat ${BROKER}/role.yaml >> ${BROKER_ROLE_TPL}
 echo '{{- end -}}' >> ${BROKER_ROLE_TPL}
 sed -i -e 's/name:.*/name: {{ template "submariner-k8s-broker.fullname" \. }}-cluster/' ${BROKER_ROLE_TPL}
 
 # Generate the CRDs for the operator chart
 mkdir -p submariner-operator/crds
-cat yamls/Deploy_crds_submariner_io_submariners.yaml \
-    yamls/Deploy_crds_submariner_io_servicediscoveries.yaml \
-    yamls/Deploy_crds_submariner_io_brokers.yaml > submariner-operator/crds/crd.yaml
+cat ${OPERATOR_CRDS}/submariner.io_submariners.yaml \
+    ${OPERATOR_CRDS}/submariner.io_servicediscoveries.yaml \
+    ${OPERATOR_CRDS}/submariner.io_brokers.yaml > submariner-operator/crds/crd.yaml
 
 # Generate the operator RBAC yaml for the operator chart
-add_service_acct_ns yamls/Config_rbac_submariner_operator_cluster_role_binding.yaml
-cat yamls/Config_rbac_submariner_operator_service_account.yaml \
-    yamls/Config_rbac_submariner_operator_role.yaml \
-    yamls/Config_rbac_submariner_operator_role_binding.yaml \
-    yamls/Config_rbac_submariner_operator_cluster_role.yaml \
-    yamls/Config_rbac_submariner_operator_cluster_role_binding.yaml > ${OPERATOR_RBAC_YAML}
+add_service_acct_ns ${RBAC_BASE}/submariner-operator/cluster_role_binding.yaml
+cat ${RBAC_BASE}/submariner-operator/service_account.yaml \
+    ${RBAC_BASE}/submariner-operator/role.yaml \
+    ${RBAC_BASE}/submariner-operator/role_binding.yaml \
+    ${RBAC_BASE}/submariner-operator/cluster_role.yaml \
+    ${RBAC_BASE}/submariner-operator/cluster_role_binding.yaml > ${OPERATOR_RBAC_YAML}
 
 # Generate the gateway RBAC yaml for the operator chart
-add_service_acct_ns yamls/Config_rbac_submariner_gateway_cluster_role_binding.yaml
-cat yamls/Config_rbac_submariner_gateway_service_account.yaml \
-    yamls/Config_rbac_submariner_gateway_role.yaml \
-    yamls/Config_rbac_submariner_gateway_role_binding.yaml \
-    yamls/Config_rbac_submariner_gateway_cluster_role.yaml \
-    yamls/Config_rbac_submariner_gateway_cluster_role_binding.yaml > ${GATEWAY_RBAC_YAML}
+add_service_acct_ns ${RBAC_BASE}/submariner-gateway/cluster_role_binding.yaml
+cat ${RBAC_BASE}/submariner-gateway/service_account.yaml \
+    ${RBAC_BASE}/submariner-gateway/role.yaml \
+    ${RBAC_BASE}/submariner-gateway/role_binding.yaml \
+    ${RBAC_BASE}/submariner-gateway/cluster_role.yaml \
+    ${RBAC_BASE}/submariner-gateway/cluster_role_binding.yaml > ${GATEWAY_RBAC_YAML}
 
 # Generate the routeagent RBAC yaml for the operator chart
-add_service_acct_ns yamls/Config_rbac_submariner_route_agent_cluster_role_binding.yaml
-cat yamls/Config_rbac_submariner_route_agent_service_account.yaml \
-    yamls/Config_rbac_submariner_route_agent_role.yaml \
-    yamls/Config_rbac_submariner_route_agent_role_binding.yaml \
-    yamls/Config_rbac_submariner_route_agent_cluster_role.yaml \
-    yamls/Config_rbac_submariner_route_agent_cluster_role_binding.yaml > ${ROUTE_AGENT_RBAC_YAML}
+add_service_acct_ns ${RBAC_BASE}/submariner-route-agent/cluster_role_binding.yaml
+cat ${RBAC_BASE}/submariner-route-agent/service_account.yaml \
+    ${RBAC_BASE}/submariner-route-agent/role.yaml \
+    ${RBAC_BASE}/submariner-route-agent/role_binding.yaml \
+    ${RBAC_BASE}/submariner-route-agent/cluster_role.yaml \
+    ${RBAC_BASE}/submariner-route-agent/cluster_role_binding.yaml > ${ROUTE_AGENT_RBAC_YAML}
 
 # Generate the globalnet RBAC yaml for the operator chart
 echo '{{- if .Values.broker.globalnet }}' > ${GLOBALNET_RBAC_YAML}
-add_service_acct_ns yamls/Config_rbac_submariner_globalnet_cluster_role_binding.yaml
-cat yamls/Config_rbac_submariner_globalnet_service_account.yaml \
-    yamls/Config_rbac_submariner_globalnet_role.yaml \
-    yamls/Config_rbac_submariner_globalnet_role_binding.yaml \
-    yamls/Config_rbac_submariner_globalnet_cluster_role.yaml \
-    yamls/Config_rbac_submariner_globalnet_cluster_role_binding.yaml >> ${GLOBALNET_RBAC_YAML}
+add_service_acct_ns ${RBAC_BASE}/submariner-globalnet/cluster_role_binding.yaml
+cat ${RBAC_BASE}/submariner-globalnet/service_account.yaml \
+    ${RBAC_BASE}/submariner-globalnet/role.yaml \
+    ${RBAC_BASE}/submariner-globalnet/role_binding.yaml \
+    ${RBAC_BASE}/submariner-globalnet/cluster_role.yaml \
+    ${RBAC_BASE}/submariner-globalnet/cluster_role_binding.yaml >> ${GLOBALNET_RBAC_YAML}
 echo '{{- end -}}' >> ${GLOBALNET_RBAC_YAML}
 
 # Generate the service discovery RBAC yaml for the operator chart
 echo '{{- if .Values.submariner.serviceDiscovery }}' > ${SERVICE_DISC_RBAC_YAML}
-add_service_acct_ns yamls/Config_rbac_lighthouse_agent_cluster_role_binding.yaml
-add_service_acct_ns yamls/Config_rbac_lighthouse_coredns_cluster_role_binding.yaml
-cat yamls/Config_rbac_lighthouse_agent_service_account.yaml \
-    yamls/Config_rbac_lighthouse_agent_cluster_role.yaml \
-    yamls/Config_rbac_lighthouse_agent_cluster_role_binding.yaml \
-    yamls/Config_rbac_lighthouse_coredns_service_account.yaml \
-    yamls/Config_rbac_lighthouse_coredns_cluster_role.yaml \
-    yamls/Config_rbac_lighthouse_coredns_cluster_role_binding.yaml >> ${SERVICE_DISC_RBAC_YAML}
+add_service_acct_ns ${RBAC_BASE}/lighthouse-agent/cluster_role_binding.yaml
+add_service_acct_ns ${RBAC_BASE}/lighthouse-coredns/cluster_role_binding.yaml
+cat ${RBAC_BASE}/lighthouse-agent/service_account.yaml \
+    ${RBAC_BASE}/lighthouse-agent/cluster_role.yaml \
+    ${RBAC_BASE}/lighthouse-agent/cluster_role_binding.yaml \
+    ${RBAC_BASE}/lighthouse-coredns/service_account.yaml \
+    ${RBAC_BASE}/lighthouse-coredns/cluster_role.yaml \
+    ${RBAC_BASE}/lighthouse-coredns/cluster_role_binding.yaml >> ${SERVICE_DISC_RBAC_YAML}
 echo '{{- end -}}' >> ${SERVICE_DISC_RBAC_YAML}
 
 # Generate the openshift monitoring rbac yaml for the operator chart
-cat yamls/Config_openshift_rbac_submariner_metrics_reader_role.yaml \
-    yamls/Config_openshift_rbac_submariner_metrics_reader_role_binding.yaml > ${OPENSHIFT_MONITORING_YAML}
+cat ${OPENSHIFT}/rbac/submariner-metrics-reader/role.yaml \
+    ${OPENSHIFT}/rbac/submariner-metrics-reader/role_binding.yaml > ${OPENSHIFT_MONITORING_YAML}
