@@ -6,7 +6,9 @@ Makefile.dapper
 Makefile.shipyard
 Dockerfile.*
 helm_repo
-yamls
+yamls/go.mod
+yamls/go.sum
+yamls/vendor
 submariner-k8s-broker/crds/crd.yaml
 submariner-k8s-broker/templates/_role.tpl
 submariner-operator/crds/crd.yaml
