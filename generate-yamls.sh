@@ -93,9 +93,13 @@ add_service_acct_ns ${RBAC_BASE}/lighthouse-coredns/cluster_role_binding.yaml
 cat ${RBAC_BASE}/lighthouse-agent/service_account.yaml \
     ${RBAC_BASE}/lighthouse-agent/cluster_role.yaml \
     ${RBAC_BASE}/lighthouse-agent/cluster_role_binding.yaml \
+    ${RBAC_BASE}/lighthouse-agent/role.yaml \
+    ${RBAC_BASE}/lighthouse-agent/role_binding.yaml \
     ${RBAC_BASE}/lighthouse-coredns/service_account.yaml \
     ${RBAC_BASE}/lighthouse-coredns/cluster_role.yaml \
-    ${RBAC_BASE}/lighthouse-coredns/cluster_role_binding.yaml >> ${SERVICE_DISC_RBAC_YAML}
+    ${RBAC_BASE}/lighthouse-coredns/cluster_role_binding.yaml \
+    ${RBAC_BASE}/lighthouse-coredns/role.yaml \
+    ${RBAC_BASE}/lighthouse-coredns/role_binding.yaml >> ${SERVICE_DISC_RBAC_YAML}
 echo '{{- end -}}' >> ${SERVICE_DISC_RBAC_YAML}
 
 # Generate the openshift monitoring rbac yaml for the operator chart
