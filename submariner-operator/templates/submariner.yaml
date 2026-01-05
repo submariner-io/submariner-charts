@@ -6,8 +6,12 @@ metadata:
 spec:
   broker: k8s
   brokerK8sApiServer: {{ .Values.broker.server }}
+  {{- if .Values.submariner.brokerK8sSecret }}
+  brokerK8sSecret: {{ .Values.submariner.brokerK8sSecret }}
+  {{- else }}
   brokerK8sApiServerToken: {{ .Values.broker.token }}
   brokerK8sCA: {{ .Values.broker.ca }}
+  {{- end }}
   brokerK8sRemoteNamespace: {{ .Values.broker.namespace }}
   brokerK8sInsecure: {{ .Values.broker.insecure }}
   ceIPSecDebug: {{ .Values.ipsec.debug }}

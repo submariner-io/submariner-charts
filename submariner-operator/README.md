@@ -52,5 +52,6 @@ Submariner enables direct networking between Pods and Services in different Kube
 | submariner.images.tag | string | `"0.14.0"` |  |
 | submariner.natEnabled | bool | `false` |  |
 | submariner.serviceCidr | string | `""` |  |
+| submariner.brokerK8sSecret | string | `""` |  Name of the Kubernetes Secret containing broker credentials (ca.crt, token). |
 | submariner.serviceDiscovery | bool | `true` |  |
 | submariner.token | string | `""` |  |
