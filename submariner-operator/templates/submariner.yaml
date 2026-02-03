@@ -18,7 +18,11 @@ spec:
   ceIPSecForceUDPEncaps: {{ .Values.ipsec.forceUDPEncaps }}
   ceIPSecIKEPort: {{ .Values.ipsec.ikePort }}
   ceIPSecNATTPort: {{ .Values.ipsec.natPort }}
+  {{- if .Values.ipsec.pskSecret }}
+  ceIPSecPSKSecret: {{ .Values.ipsec.pskSecret }}
+  {{- else }}
   ceIPSecPSK: {{ .Values.ipsec.psk }}
+  {{- end }}
   clusterCIDR: "{{ .Values.submariner.clusterCidr }}"
   clusterID: {{ .Values.submariner.clusterId }}
   colorCodes: {{ .Values.submariner.colorCodes }}
