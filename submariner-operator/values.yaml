@@ -29,6 +29,7 @@ broker:
 images: {}
 ipsec:
   psk: ""
+  pskSecret: ""
   debug: false
   forceUDPEncaps: false
   ikePort: 500

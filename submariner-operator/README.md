@@ -28,6 +28,7 @@ Submariner enables direct networking between Pods and Services in different Kube
 | ipsec.forceUDPEncaps | bool | `false` |  |
 | ipsec.ikePort | int | `500` |  |
 | ipsec.natPort | int | `4500` |  |
+| ipsec.pskSecret | string | `""` | Name of the Kubernetes Secret containing the IPsec PSK as field psk |
 | ipsec.psk | string | `""` |  |
 | leadership.leaseDuration | int | `10` |  |
 | leadership.renewDeadline | int | `5` |  |
