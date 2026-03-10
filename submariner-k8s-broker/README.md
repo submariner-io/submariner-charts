@@ -6,9 +6,9 @@ Submariner Kubernetes Broker
 
 ## Maintainers
 
-| Name | Email | Url |
-| ---- | ------ | --- |
-| Contributors to the Submariner project | submariner-dev@googlegroups.com | https://submariner.io/ |
+ | Name | Email | Url |
+ | ---- | ------ | --- |
+ | Contributors to the Submariner project | submariner-dev@googlegroups.com | https://submariner.io/ |
 
 ## Source Code
 
