@@ -17,7 +17,7 @@ Submariner enables direct networking between Pods and Services in different Kube
 ## Values
 
  | Key | Type | Default | Description |
- |-----|------|---------|-------------|
+ | ----- | ------ | --------- | ------------- |
  | broker.ca | string | `""` |  |
  | broker.globalnet | bool | `false` |  |
  | broker.insecure | bool | `false` |  |
