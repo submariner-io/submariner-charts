@@ -2,6 +2,9 @@
 # Breaks reusing MD snippets extracted to files
 first-line-heading: false
 
+# Accept any consistent table column style
+table-column-style: false
+
 # Set maximum line Length to 140c to match Go linting
 line-length:
   line_length: 140
