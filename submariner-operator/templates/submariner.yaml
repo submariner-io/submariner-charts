@@ -20,8 +20,8 @@ spec:
   ceIPSecNATTPort: {{ .Values.ipsec.natPort }}
   {{- if .Values.ipsec.pskSecret }}
   ceIPSecPSKSecret: {{ .Values.ipsec.pskSecret }}
-  {{- else }}
-  ceIPSecPSK: {{ .Values.ipsec.psk }}
+  {{- else if .Values.ipsec.psk }}
+  ceIPSecPSK: {{ .Values.ipsec.psk | quote }}
   {{- end }}
   clusterCIDR: "{{ .Values.submariner.clusterCidr }}"
   clusterID: {{ .Values.submariner.clusterId }}
